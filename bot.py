@@ -45,7 +45,7 @@ async def on_message(message):
         sortedres.reverse()
         msg = ''
         for res in sortedres:
-            msg += res['name'] + ': ' + str(res['smooth'])
+            msg += res['name'] + ': ' + str(res['smooth']) + '\n'
         await message.channel.send(msg)
         return
 
@@ -69,6 +69,7 @@ async def on_message(message):
         members = message.mentions[0]
         if (message.author.id == members.id):
             await message.channel.send('You cant give yourself a wrinkle dumbass.')
+            return
         hasEntry = r.exists(members.name)
         
         data = {'wrinkles':0, 'smooths':0}
