@@ -34,7 +34,7 @@ async def on_message(message):
         members = await message.guild.fetch_members(limit=150).flatten()
         res = []
         for member in members:
-            if (r.exists(member.name)):
+            if (r.exists(member.name)) and member.bot == False:
                 data = eval(r.get(member.name).decode("utf-8"))
                 res.append({'name': member.name, 'wrinkle' : data['wrinkles']})
         
@@ -50,7 +50,7 @@ async def on_message(message):
         members = await message.guild.fetch_members(limit=150).flatten()
         res = []
         for member in members:
-            if (r.exists(member.name)):
+            if (r.exists(member.name)) and member.bot == False:
                 data = eval(r.get(member.name).decode("utf-8"))
                 res.append({'name': member.name, 'smooth' : data['smooths']})
         
