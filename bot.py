@@ -26,7 +26,7 @@ async def on_message(message):
         sortedres = sorted(res, key = lambda i: i['wrinkle'])
         msg = ''
         for res in sortedres:
-            msg += res['name'] + ': ' + str(res['wrinkle'])
+            msg = msg + res['name'] + ': ' + str(res['wrinkle']) + '\n'
         await message.channel.send(msg)
         return
 
