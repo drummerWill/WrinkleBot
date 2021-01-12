@@ -17,6 +17,19 @@ async def on_message(message):
     if message.author == client.user:
         return
     
+    
+    if message.content.startswith('*clear'):
+        members = await message.guild.fetch_members(limit=150).flatten()
+        res = []
+        data = {'wrinkles':0, 'smooths':0}
+        for member in members:
+            if (r.exists(member.name)):
+                r.set(member.name, str(data))
+               
+        return
+
+
+
     if message.content.startswith('*wrinklelist'):
         members = await message.guild.fetch_members(limit=150).flatten()
         res = []
