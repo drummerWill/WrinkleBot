@@ -25,7 +25,18 @@ async def on_message(message):
 
     if message.content.startswith('*smooth'):
         members = message.mentions[0]
-        await message.channel.send('Gave ' + members.name + ' a smooth.')
+        if (message.author.id == members.id):
+                return
+        hasEntry = r.exists(members.name)
+        
+        data = {'wrinkles':0, 'smooths':0}
+        if hasEntry == True:
+            data = eval(r.get(members.name).decode("utf-8"))
+        
+        data['smooths'] = data['smooths'] + 1
+
+        r.set(members.name, str(data))
+        await message.channel.send('Gave ' + members.name + ' a smooth. He now has ' + str(data['smooths']) + '.')
         return
 
     if message.content.startswith('*wrinkle'):
