@@ -18,15 +18,18 @@ async def on_message(message):
     if message.content.startswith('*wrinklelist'):
         members = message.guild.members
         res = []
+        await message.channel.send(str(members))
         for member in members:
             if (r.exists(member.name)):
                 data = eval(r.get(member.name).decode("utf-8"))
                 res.append({'name': member.name, 'wrinkle' : data['wrinkles']})
         
+        await message.channel.send(str(res))
         sortedres = sorted(res, key = lambda i: i['wrinkle'])
+        await message.channel.send(str(sortedres))
         msg = ''
-        for res in sortedres:
-            msg = msg + res['name'] + ': ' + str(res['wrinkle']) + '\n'
+        for person in sortedres:
+            msg = msg + person['name'] + ': ' + str(person['wrinkle']) + '\n'
         await message.channel.send(msg)
         return
 
