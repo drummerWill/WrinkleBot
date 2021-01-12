@@ -2,7 +2,9 @@ import discord
 import os
 import redis
 
-client = discord.Client() 
+intents = discord.Intents.default()
+intents.members = True  # Subscribe to the privileged members intent.
+client = discord.Client(intents=intents) 
 token = os.getenv("DISCORD_BOT_TOKEN")
 r = redis.from_url(os.environ.get("REDISTOGO_URL"))
 
@@ -16,7 +18,7 @@ async def on_message(message):
         return
     
     if message.content.startswith('*wrinklelist'):
-        members = message.channel.members
+        members = await message.guild.fetch_members(limit=150).flatten()
         res = []
         await message.channel.send(str(members))
         for member in members:
