@@ -36,13 +36,19 @@ async def on_message(message):
         for member in members:
             if (r.exists(member.name)) and member.bot == False:
                 data = eval(r.get(member.name).decode("utf-8"))
-                res.append({'name': member.name, 'wrinkle' : data['wrinkles']})
+                res.append({'name': member, 'wrinkle' : data['wrinkles']})
         
         sortedres = sorted(res, key = lambda i: i['wrinkle'])
         sortedres.reverse()
         msg = ''
+        topmember = sortedres[0]['name']
+        currentNick = topmember.nick
+        if (currentNick.startswith('Big') == False):
+            newNick = 'Big Brain ' + currentNick
+            await topmember.edit(nick=newNick)
+
         for person in sortedres:
-            msg = msg + person['name'] + ': ' + str(person['wrinkle']) + '\n'
+            msg = msg + person['name'].name + ': ' + str(person['wrinkle']) + '\n'
         await message.channel.send(msg)
         return
 
@@ -51,14 +57,22 @@ async def on_message(message):
         res = []
         for member in members:
             if (r.exists(member.name)) and member.bot == False:
-                data = eval(r.get(member.name).decode("utf-8"))
+                data = eval(r.get(member).decode("utf-8"))
                 res.append({'name': member.name, 'smooth' : data['smooths']})
         
         sortedres = sorted(res, key = lambda i: i['smooth'])
         sortedres.reverse()
         msg = ''
+        topmember = sortedres[0]['name']
+        currentNick = topmember.nick
+        if (currentNick.startswith('Caveman') == False):
+            newNick = 'Caveman Retard' + currentNick
+            await topmember.edit(nick=newNick)
+
+
+        await topmember.edit()
         for res in sortedres:
-            msg += res['name'] + ': ' + str(res['smooth']) + '\n'
+            msg += res['name'].name + ': ' + str(res['smooth']) + '\n'
         await message.channel.send(msg)
         return
 
