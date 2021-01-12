@@ -4,7 +4,7 @@ import redis
 
 client = discord.Client() 
 token = os.getenv("DISCORD_BOT_TOKEN")
-r = redis.from_url(os.environ.get("REDIS_URL"))
+r = redis.from_url(os.environ.get("REDISTOGO_URL"))
 
 r.set('foo', 'bar')
 
