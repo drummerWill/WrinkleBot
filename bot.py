@@ -16,7 +16,7 @@ async def on_message(message):
         return
     
     if message.content.startswith('*wrinklelist'):
-        members = message.guild.members
+        members = message.channel.members
         res = []
         await message.channel.send(str(members))
         for member in members:
