@@ -20,16 +20,12 @@ async def on_message(message):
     if message.content.startswith('*wrinklelist'):
         members = await message.guild.fetch_members(limit=150).flatten()
         res = []
-        await message.channel.send(str(members))
         for member in members:
-            await message.channel.send(member.name)
             if (r.exists(member.name)):
                 data = eval(r.get(member.name).decode("utf-8"))
                 res.append({'name': member.name, 'wrinkle' : data['wrinkles']})
         
-        await message.channel.send(str(res))
-        sortedres = sorted(res, key = lambda i: i['wrinkle'])
-        await message.channel.send(str(sortedres))
+        sortedres = sorted(res, key = lambda i: i['wrinkle']).reverse()
         msg = ''
         for person in sortedres:
             msg = msg + person['name'] + ': ' + str(person['wrinkle']) + '\n'
@@ -37,14 +33,14 @@ async def on_message(message):
         return
 
     if message.content.startswith('*smoothlist'):
-        members = message.guild.members
+        members = await message.guild.fetch_members(limit=150).flatten()
         res = []
         for member in members:
             if (r.exists(member.name)):
                 data = eval(r.get(member.name).decode("utf-8"))
                 res.append({'name': member.name, 'smooth' : data['smooths']})
         
-        sortedres = sorted(res, key = lambda i: i['smooth'])
+        sortedres = sorted(res, key = lambda i: i['smooth']).reverse()
         msg = ''
         for res in sortedres:
             msg += res['name'] + ': ' + str(res['smooth'])
