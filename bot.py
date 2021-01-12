@@ -30,7 +30,10 @@ async def on_message(message):
 
     if message.content.startswith('*wrinkle'):
         members = message.mentions[0]
+        if (message.author.id == members.id):
+            await message.channel.send('You cant give yourself a wrinkle dumbass.')
         hasEntry = r.exists(members.name)
+        
         data = {'wrinkles':0, 'smooths':0}
         if hasEntry == True:
             data = eval(r.get(members.name).decode("utf-8"))
@@ -38,7 +41,7 @@ async def on_message(message):
         data['wrinkles'] = data['wrinkles'] + 1
 
         r.set(members.name, str(data))
-        await message.channel.send('Gave ' + members.name + ' a wrinkle.')
+        await message.channel.send('Gave ' + members.name + ' a wrinkle. He now has ' + data['wrinkles'] + '.')
         return
 
 
