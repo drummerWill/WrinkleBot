@@ -20,6 +20,7 @@ async def on_message(message):
         res = []
         await message.channel.send(str(members))
         for member in members:
+            await message.channel.send(member.name)
             if (r.exists(member.name)):
                 data = eval(r.get(member.name).decode("utf-8"))
                 res.append({'name': member.name, 'wrinkle' : data['wrinkles']})
