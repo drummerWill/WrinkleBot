@@ -37,7 +37,7 @@ async def on_message(message):
         
         data['wrinkles'] = data['wrinkles'] + 1
 
-        r.set(members.name, data)
+        r.set(members.name, str(data))
         await message.channel.send('Gave ' + members.name + ' a wrinkle.')
         return
 
