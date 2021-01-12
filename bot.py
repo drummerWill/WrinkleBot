@@ -1,8 +1,12 @@
 import discord
 import os
+import redis
 
 client = discord.Client() 
 token = os.getenv("DISCORD_BOT_TOKEN")
+r = redis.from_url(os.environ.get("REDIS_URL"))
+
+r.set('foo', 'bar')
 
 @client.event
 async def on_ready():
@@ -14,7 +18,8 @@ async def on_message(message):
         return
 
     if message.content.startswith('$plot'):
-        await run(message)
+        msg = r.get('foo')
+        await message.channel.send(msg)
         return
 
     # if message.content.startswith('$skrap'):
