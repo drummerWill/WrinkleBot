@@ -15,12 +15,34 @@ async def on_message(message):
     if message.author == client.user:
         return
     
-    if message.content.startswith('*smoothlist'):
-        await message.channel.send('')
+    if message.content.startswith('*wrinklelist'):
+        members = message.guild.members
+        res = []
+        for member in members:
+            if (r.exists(member.name)):
+                data = eval(r.get(member.name).decode("utf-8"))
+                res.append({'name': member.name, 'wrinkle' : data['wrinkles']})
+        
+        sortedres = sorted(res, key = lambda i: i['wrinkle'])
+        msg = ''
+        for res in sortedres:
+            msg += res['name'] + ': ' + str(res['wrinkle'])
+        await message.channel.send(msg)
         return
 
-    if message.content.startswith('*wrinklelist'):
-        await message.channel.send('')
+    if message.content.startswith('*smoothlist'):
+        members = message.guild.members
+        res = []
+        for member in members:
+            if (r.exists(member.name)):
+                data = eval(r.get(member.name).decode("utf-8"))
+                res.append({'name': member.name, 'smooth' : data['smooths']})
+        
+        sortedres = sorted(res, key = lambda i: i['smooth'])
+        msg = ''
+        for res in sortedres:
+            msg += res['name'] + ': ' + str(res['smooth'])
+        await message.channel.send(msg)
         return
 
     if message.content.startswith('*smooth'):
