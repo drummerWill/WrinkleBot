@@ -68,7 +68,7 @@ async def on_message(message):
         await message.channel.send('Gave ' + members.name + ' a smooth. He now has ' + str(data['smooths']) + '.')
         return
 
-    if message.content == "*balance" or message.content == "*bal":
+    if message.content.startswith('*balance'):
             print('Requested')
             hasEntry = r.exists(message.author.name)
             if hasEntry == True:
