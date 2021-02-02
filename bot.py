@@ -82,6 +82,29 @@ async def on_message(message):
     #     return
 
 
+
+    if message.content.startswith('*tax'):
+        if (message.author.name == 'Nobuzerker' or message.author.name == 'Yertle' or message.author.name == 'William'):
+            amount = float(message.content.split()[2])
+            if (amount < 0):
+                return
+            members = message.mentions[0]
+            hasEntry = r.exists(members.name)
+        
+
+            data = {'wrinkles':0, 'smooths':0, 'GoonBucks':20}
+            if hasEntry == True:
+                data = eval(r.get(members.name).decode("utf-8"))
+            
+            data['GoonBucks'] =data['GoonBucks'] - amount
+            
+        
+            r.set(members.name, str(data))
+            await message.channel.send('Taxed ' + members.name + ' <:goonbuck:806019179567251516> ' + str(round(amount, 2)) + '.')
+            return
+
+
+
     if message.content.startswith('*pay'):
         amount = float(message.content.split()[2])
         if (amount < 0):
@@ -121,11 +144,12 @@ async def on_message(message):
                 return
         hasEntry = r.exists(members.name)
         
-        data = {'wrinkles':0, 'smooths':0}
+        data = {'wrinkles':0, 'smooths':0, 'GoonBucks':0}
         if hasEntry == True:
             data = eval(r.get(members.name).decode("utf-8"))
         
         data['smooths'] = data['smooths'] + 1
+        data['GoonBucks'] = data['GoonBucks'] - 1
 
         r.set(members.name, str(data))
         await message.channel.send('Gave ' + members.name + ' a smooth. He now has ' + str(data['smooths']) + '.')
@@ -147,11 +171,12 @@ async def on_message(message):
             return
         hasEntry = r.exists(members.name)
         
-        data = {'wrinkles':0, 'smooths':0}
+        data = {'wrinkles':0, 'smooths':0, 'GoonBucks':0}
         if hasEntry == True:
             data = eval(r.get(members.name).decode("utf-8"))
         
         data['wrinkles'] = data['wrinkles'] + 1
+        data['GoonBucks'] = data['GoonBucks'] + .5
 
         r.set(members.name, str(data))
         await message.channel.send('Gave ' + members.name + ' a wrinkle. He now has ' + str(data['wrinkles']) + '.')
