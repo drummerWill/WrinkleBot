@@ -331,10 +331,13 @@ async def Foo():
             await asyncio.sleep(30)    
 
 def calculateWage(member):
-    activity = member.activity
-    print(activity)
-    print(member)
-    return .1 
+    wage = .1
+    if (member.voice.self_stream == True and member.name != 'Yertle'):
+        wage = wage + .02
+    if (member.voice.self_video == True):
+        wage = wage + .02
+    
+    return wage
 
 
 
