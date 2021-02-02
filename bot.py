@@ -100,6 +100,7 @@ async def Foo():
     await client.wait_until_ready()
     guildid = 251058760779431936
     guild = client.get_guild(guildid)
+    print('Search')
     members = await guild.fetch_members(limit=150).flatten()
     while (True):
         goodgoons = []
@@ -118,7 +119,7 @@ async def Foo():
                         else:
                             data['GoonBucks'] = 20
                     r.set(member.name, str(data))
-
+    print('Sleep')
     await asyncio.sleep(30)
 
 client.loop.create_task(Foo())
