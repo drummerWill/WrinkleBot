@@ -1,6 +1,8 @@
 import discord
 import os
 import redis
+from discord.ext import commands, tasks
+import asyncio
 
 intents = discord.Intents.default()
 intents.members = True  # Subscribe to the privileged members intent.
@@ -17,18 +19,6 @@ async def on_message(message):
     if message.author == client.user:
         return
     
-    
-    # if message.content.startswith('*clear'):
-    #     members = await message.guild.fetch_members(limit=150).flatten()
-    #     res = []
-    #     data = {'wrinkles':0, 'smooths':0}
-    #     for member in members:
-    #         if (r.exists(member.name)):
-    #             r.set(member.name, str(data))
-               
-    #     return
-
-
 
     if message.content.startswith('*wrinklelist'):
         members = await message.guild.fetch_members(limit=150).flatten()
@@ -78,6 +68,15 @@ async def on_message(message):
         await message.channel.send('Gave ' + members.name + ' a smooth. He now has ' + str(data['smooths']) + '.')
         return
 
+    if message.content == "*balance" or message.content == "*bal":
+            hasEntry = r.exists(message.author.name)
+            if hasEntry:
+                data = eval(r.get(members.name).decode("utf-8"))
+                if ('GoonBucks' in data.keys()):
+                    await message.channel.send('You have ' + str(data['GoonBucks'] + ' GoonBucks.'))
+
+
+
     if message.content.startswith('*wrinkle'):
         members = message.mentions[0]
         if (message.author.id == members.id):
@@ -96,4 +95,31 @@ async def on_message(message):
         return
 
 
+
+async def Foo():
+    await client.wait_until_ready()
+    guildid = 251058760779431936
+    guild = client.get_guild(guildid)
+    members = await guild.fetch_members(limit=150).flatten()
+    while (True):
+        goodgoons = []
+        for member in members:
+            if (member.voice != None and member.voice.self_mute == False and member.voice.self_deaf == False):
+                goodgoons.append(member)
+        for member in members:
+            if ((member.voice != None) and (member.voice.self_mute == False) and (member.voice.self_deaf == False) and (member.voice.mute == False) and (member.voice.deaf == False)):
+                if any(goon.voice.channel.id == member.voice.channel.id and goon.id != member.id for goon in goodgoons):
+                    hasEntry = r.exists(members.name)
+                    data = {'wrinkles':0, 'smooths':0, 'GoonBucks':20}
+                    if hasEntry == True:
+                        data = eval(r.get(members.name).decode("utf-8"))
+                        if ('GoonBucks' in data.keys()):
+                            data['GoonBucks'] = data['GoonBucks'] + .1
+                        else:
+                            data['GoonBucks'] = 20
+                    r.set(members.name, str(data))
+    
+    await asyncio.sleep(1)
+
+client.loop.create_task(Foo())
 client.run(token) 
