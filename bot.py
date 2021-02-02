@@ -26,7 +26,7 @@ async def on_message(message):
     
 
     if message.content.startswith('*help'):
-        msg = "*da_bank (shows Goon Buck leaderboard) \n "
+        msg = "*da_bank (shows Goon Buck leaderboard) \n"
         msg = msg + "*balance (show your balance) \n"
         msg = msg + "*gamble <amount> (gamble the amount in bucks) \n"
         msg = msg + "*pay <@User> <amount> \n"
