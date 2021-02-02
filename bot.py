@@ -69,12 +69,11 @@ async def on_message(message):
         return
 
     if message.content == "*balance" or message.content == "*bal":
+            print('Requested')
             hasEntry = r.exists(message.author.name)
-            if hasEntry:
+            if hasEntry == True:
                 data = eval(r.get(message.author.name).decode("utf-8"))
-                print(data)
-                if ('GoonBucks' in data.keys()):
-                    await message.channel.send('You have ' + str(data['GoonBucks'] + ' GoonBucks.'))
+                await message.channel.send('You have ' + str(data['GoonBucks'] + ' GoonBucks.'))
 
 
 
@@ -115,11 +114,10 @@ async def Foo():
                     if hasEntry == True:
                         data = eval(r.get(member.name).decode("utf-8"))
                         if ('GoonBucks' in data.keys()):
-                            data['GoonBucks'] = data['GoonBucks'] + .1
+                            data['GoonBucks'] = float(data['GoonBucks']) + .1
                         else:
                             data['GoonBucks'] = 20
                     r.set(member.name, str(data))
-                    print(str(data))
 
     await asyncio.sleep(30)
 
