@@ -73,7 +73,7 @@ async def on_message(message):
             hasEntry = r.exists(message.author.name)
             if hasEntry == True:
                 data = eval(r.get(message.author.name).decode("utf-8"))
-                await message.channel.send('You have ' + str(data['GoonBucks'] + ' GoonBucks.'))
+                await message.channel.send('You have ' + str(data['GoonBucks']) + ' GoonBucks.')
 
 
 
