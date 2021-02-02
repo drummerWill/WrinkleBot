@@ -26,7 +26,18 @@ async def on_message(message):
     
 
     if message.content.startswith('*help'):
-        msg = ''
+        msg = "*da_bank (shows Goon Buck leaderboard) \n "
+        msg = msg + "*balance (show your balance) \n"
+        msg = msg + "*gamble <amount> (gamble the amount in bucks) \n"
+        msg = msg + "*pay <@User> <amount> \n"
+        msg = msg + "*positions (show your stock positions) \n"
+        msg = msg + "*buy <stock> <amount> (buy amount in bucks) \n"
+        msg = msg + "*sell <stock> <amount> (sell amount in shares) \n"
+        msg = msg + "*stonk <stock> (see stock price) \n"
+        msg = msg + "*daily  (get daily login bonus) \n"
+
+        
+
         await message.channel.send(msg)
 
 
