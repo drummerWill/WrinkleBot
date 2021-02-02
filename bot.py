@@ -323,16 +323,17 @@ async def Foo():
                         if hasEntry == True:
                             data = eval(r.get(member.name).decode("utf-8"))
                             if ('GoonBucks' in data.keys()):
-                                data['GoonBucks'] = float(data['GoonBucks']) + calculateWage(member.name)
+                                data['GoonBucks'] = float(data['GoonBucks']) + calculateWage(member)
                             else:
                                 data['GoonBucks'] = 20
                         r.set(member.name, str(data))
             print('Looped')
             await asyncio.sleep(30)    
 
-def calculateWage(name):
-    if (name== "YoungBumi"):
-        return .1
+def calculateWage(member):
+    activity = member.activity
+    print(activity)
+    print(member)
     return .1 
 
 
