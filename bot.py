@@ -223,12 +223,20 @@ async def Foo():
                         if hasEntry == True:
                             data = eval(r.get(member.name).decode("utf-8"))
                             if ('GoonBucks' in data.keys()):
-                                data['GoonBucks'] = float(data['GoonBucks']) + .1
+                                data['GoonBucks'] = float(data['GoonBucks']) + calculateWage(member.name)
                             else:
                                 data['GoonBucks'] = 20
                         r.set(member.name, str(data))
             print('Looped')
             await asyncio.sleep(30)    
+
+def calculateWage(name):
+    if (name== "YoungBumi"):
+        return .12
+    return .1 
+
+
+
 
 client.loop.create_task(Foo())
 client.run(token) 
