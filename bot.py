@@ -71,7 +71,7 @@ async def on_message(message):
     if message.content == "*balance" or message.content == "*bal":
             hasEntry = r.exists(message.author.name)
             if hasEntry:
-                data = eval(r.get(members.name).decode("utf-8"))
+                data = eval(r.get(message.author.name).decode("utf-8"))
                 if ('GoonBucks' in data.keys()):
                     await message.channel.send('You have ' + str(data['GoonBucks'] + ' GoonBucks.'))
 
