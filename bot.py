@@ -117,7 +117,7 @@ async def Foo():
                         else:
                             data['GoonBucks'] = 20
                     r.set(member.name, str(data))
-    
+        await asyncio.sleep(30)    
 
 client.loop.create_task(Foo())
 client.run(token) 
