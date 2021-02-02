@@ -72,6 +72,7 @@ async def on_message(message):
             hasEntry = r.exists(message.author.name)
             if hasEntry:
                 data = eval(r.get(message.author.name).decode("utf-8"))
+                print(data)
                 if ('GoonBucks' in data.keys()):
                     await message.channel.send('You have ' + str(data['GoonBucks'] + ' GoonBucks.'))
 
@@ -118,7 +119,8 @@ async def Foo():
                         else:
                             data['GoonBucks'] = 20
                     r.set(member.name, str(data))
-    
+                    print(str(data))
+
     await asyncio.sleep(30)
 
 client.loop.create_task(Foo())
