@@ -4,6 +4,7 @@ import redis
 from discord.ext import commands, tasks
 from yahoo_fin import stock_info as si 
 import asyncio
+import math
 
 intents = discord.Intents.default()
 intents.members = True  # Subscribe to the privileged members intent.
@@ -107,6 +108,38 @@ async def on_message(message):
         await message.channel.send(price)
         return
 
+    if message.content.startswith('*buy'):
+        stonk = str(message.content.split()[1])
+        dollarAmount = float(message.content.split()[2])
+        if dollarAmount < 0:
+            return
+        price = si.get_live_price(stonk)
+        if math.isnan(price):
+            return
+        shares = dollarAmount/price
+        if math.isnan(shares):
+            return
+        position = {'stock': stonk, 'shares': shares}
+        if (r.exists(message.author.name)):
+            data = eval(r.get(message.author.name).decode("utf-8"))
+            if ('GoonBucks' in data.keys()):
+                data['GoonBucks'] = data['GoonBucks'] - dollarAmount
+            
+                if('Positions' in data.keys()):
+                    if (next((item for item in data['Positions'] if item["stock"] == stonk), None)):
+                        i = next((i for i, item in enumerate(data['Positions']) if item["stock"] == stonk))
+                        currentPosition = data['Positions'][i]
+                        currentPosition['shares'] = currentPosition['shares'] + shares
+                        data['Positions'][i] = currentPosition
+
+                    else:
+                        data['Positions'].append(position)
+                else:
+                    data['Positions'] = [position]    
+            print(data)
+            r.set(message.author.name, str(data))
+            await message.channel.send(message.author.name + ' bought ' + str(shares) + ' shares of ' + stonk + '.')
+            
     # if message.content.startswith('*great_reset'):
     #     members = await message.guild.fetch_members(limit=150).flatten()
     #     res = []
