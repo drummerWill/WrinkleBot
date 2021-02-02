@@ -166,12 +166,12 @@ async def on_message(message):
                             return
                         currentPosition['shares'] = currentPosition['shares'] - sellshares
                         data['GoonBucks'] = data['GoonBucks'] + returnamount
-                        if (currentPosition['shares'] < .000001):
+                        if (currentPosition['shares'] < .0000000000001):
                             data['Positions'].pop(i)
                         else:
                             data['Positions'][i] = currentPosition
                         r.set(message.author.name, str(data))
-                        await message.channel.send(message.author.name + ' sold ' + str(shares) + ' shares of ' + stonk + '.')
+                        await message.channel.send(message.author.name + ' sold ' + str(sellshares) + ' shares of ' + stonk + '.')
 
 
 
