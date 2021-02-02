@@ -2,6 +2,7 @@ import discord
 import os
 import redis
 from discord.ext import commands, tasks
+from yahoo_fin import stock_info as si 
 import asyncio
 
 intents = discord.Intents.default()
@@ -69,6 +70,12 @@ async def on_message(message):
         await message.channel.send(msg)
         return
 
+
+    if message.content.startswith('*stonk'):
+        stonk = str(message.content.split()[1])
+        price = si.get_live_price(stonk)
+        await message.channel.send(price)
+        return
 
     # if message.content.startswith('*great_reset'):
     #     members = await message.guild.fetch_members(limit=150).flatten()
