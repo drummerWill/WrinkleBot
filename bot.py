@@ -6,6 +6,7 @@ from yahoo_fin import stock_info as si
 import asyncio
 import math
 import random
+from datetime import date
 
 intents = discord.Intents.default()
 intents.members = True  # Subscribe to the privileged members intent.
@@ -203,6 +204,25 @@ async def on_message(message):
                 else:
                     data['GoonBucks'] = data['GoonBucks'] - amount
                     await message.channel.send('You Lost <:goonbuck:806019179567251516>' + str(amount) + '...')
+                r.set(message.author.name, str(data))
+                   
+        return
+
+    if message.content.startswith('*daily'):
+        if (r.exists(message.author.name)):
+            data = eval(r.get(message.author.name).decode("utf-8"))
+            if('GoonBucks' in data.keys()):
+                if ('LastDaily' in data.keys()):
+                    last = data['LastDaily']
+                    today = date.today()
+                    if (last == today):
+                        await message.channel.send('Already Claimed.')
+                        return 
+                    #
+                data['LastDaily'] = date.today()
+                data['GoonBucks'] = data['GoonBucks'] + 100
+
+                await message.channel.send('Collected Daily Login!')
                 r.set(message.author.name, str(data))
                 
 
