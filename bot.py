@@ -140,6 +140,18 @@ async def on_message(message):
             r.set(message.author.name, str(data))
             await message.channel.send(message.author.name + ' bought ' + str(shares) + ' shares of ' + stonk + '.')
             
+
+    if message.content.startswith('*positions'):    
+        if (r.exists(message.author.name)):
+            msg = ""
+            data = eval(r.get(message.author.name).decode("utf-8"))
+            if('Positions' in data.keys()):
+                for position in data['Positions']:
+                    msg = msg + position['stonk'] + ': ' + str(position['shares']) + ' shares.' + '\n'
+                await message.channel.send(msg)
+        return
+
+
     # if message.content.startswith('*great_reset'):
     #     members = await message.guild.fetch_members(limit=150).flatten()
     #     res = []
