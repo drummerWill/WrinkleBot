@@ -65,20 +65,53 @@ async def on_message(message):
         sortedres.reverse()
         msg = ''
         for res in sortedres:
-            msg += res['name'] + ': ' + str(round(res['bucks'], 2)) + '\n'
+            msg += res['name'] + ':goonbuck: ' + str(round(res['bucks'], 2)) + '\n'
         await message.channel.send(msg)
         return
 
 
-    if message.content.startswith('*great_reset'):
-        members = await message.guild.fetch_members(limit=150).flatten()
-        res = []
-        for member in members:
-            if (r.exists(member.name)) and member.bot == False:
-                data = eval(r.get(member.name).decode("utf-8"))
-                data['GoonBucks'] = 20
-                r.set(member.name, str(data))
+    # if message.content.startswith('*great_reset'):
+    #     members = await message.guild.fetch_members(limit=150).flatten()
+    #     res = []
+    #     for member in members:
+    #         if (r.exists(member.name)) and member.bot == False:
+    #             data = eval(r.get(member.name).decode("utf-8"))
+    #             data['GoonBucks'] = 20
+    #             r.set(member.name, str(data))
 
+    #     return
+
+
+    if message.content.startswith('*pay'):
+        amount = float(message.content.split()[2])
+        if (amount < 0):
+            return
+        members = message.mentions[0]
+        if (message.author.id == members.id):
+                return
+        hasEntry = r.exists(members.name)
+        
+        senderHasEntry = r.exists(message.author.name)
+        if senderHasEntry == False:
+            return
+        senderData = eval(r.get(members.name).decode("utf-8"))
+        if (senderData['GoonBucks'] < amount):
+            await message.channel.send('You dont have enough money')
+            return
+        
+
+        data = {'wrinkles':0, 'smooths':0, 'GoonBucks':20}
+        if hasEntry == True:
+            data = eval(r.get(members.name).decode("utf-8"))
+        
+        data['GoonBucks'] = data['GoonBucks'] + amount
+        senderData['GoonBucks'] = senderData['GoonBucks'] - amount
+        
+        
+        r.set(message.author.name, str(senderData))
+
+        r.set(members.name, str(data))
+        await message.channel.send('Paid ' + members.name + '' + str(round(amount, 2)) + ' Goon Bucks.')
         return
 
 
@@ -103,7 +136,7 @@ async def on_message(message):
             hasEntry = r.exists(message.author.name)
             if hasEntry == True:
                 data = eval(r.get(message.author.name).decode("utf-8"))
-                await message.channel.send('You have ' + str(round(data['GoonBucks'],2)) + ' GoonBucks.')
+                await message.channel.send('You have :goonbuck: ' + str(round(data['GoonBucks'],2)) + '.')
 
 
 
