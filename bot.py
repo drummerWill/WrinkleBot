@@ -1,7 +1,7 @@
 import discord
 import os
 import redis
-from discord.ext import commands, tasks
+from discord.ext import commands, tasks, loop
 import asyncio
 
 intents = discord.Intents.default()
@@ -95,14 +95,13 @@ async def on_message(message):
         return
 
 
-
+@loop(seconds=30)
 async def Foo():
-    await client.wait_until_ready()
-    guildid = 251058760779431936
-    guild = client.get_guild(guildid)
-    print('Search')
-    members = await guild.fetch_members(limit=150).flatten()
-    while (True):
+        await client.wait_until_ready()
+        guildid = 251058760779431936
+        guild = client.get_guild(guildid)
+        print('Search')
+        members = await guild.fetch_members(limit=150).flatten()
         goodgoons = []
         for member in members:
             if (member.voice != None and member.voice.self_mute == False and member.voice.self_deaf == False):
@@ -119,8 +118,7 @@ async def Foo():
                         else:
                             data['GoonBucks'] = 20
                     r.set(member.name, str(data))
-    print('Sleep')
-    await asyncio.sleep(30)
+    
 
-client.loop.create_task(Foo())
+Foo.start()
 client.run(token) 
