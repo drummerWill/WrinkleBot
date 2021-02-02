@@ -21,6 +21,53 @@ async def on_message(message):
         return
     
 
+    if message.content.startswith('*help'):
+        msg = ''
+        await message.channel.send(msg)
+
+
+    if message.content.startswith('*smooth'):
+        members = message.mentions[0]
+        if (message.author.id == members.id):
+                return
+        hasEntry = r.exists(members.name)
+        
+        data = {'wrinkles':0, 'smooths':0, 'GoonBucks':0}
+        if hasEntry == True:
+            data = eval(r.get(members.name).decode("utf-8"))
+        
+        data['smooths'] = data['smooths'] + 1
+        data['GoonBucks'] = data['GoonBucks'] - 1
+
+        r.set(members.name, str(data))
+        await message.channel.send('Gave ' + members.name + ' a smooth. He now has ' + str(data['smooths']) + '.')
+        return
+
+   
+
+
+
+    if message.content.startswith('*wrinkle'):
+        members = message.mentions[0]
+        if (message.author.id == members.id):
+            await message.channel.send('You cant give yourself a wrinkle dumbass.')
+            return
+        hasEntry = r.exists(members.name)
+        
+        data = {'wrinkles':0, 'smooths':0, 'GoonBucks':0}
+        if hasEntry == True:
+            data = eval(r.get(members.name).decode("utf-8"))
+        
+        data['wrinkles'] = data['wrinkles'] + 1
+        data['GoonBucks'] = data['GoonBucks'] + .5
+
+        r.set(members.name, str(data))
+        await message.channel.send('Gave ' + members.name + ' a wrinkle. He now has ' + str(data['wrinkles']) + '.')
+        return
+
+
+
+
     if message.content.startswith('*wrinklelist'):
         members = await message.guild.fetch_members(limit=150).flatten()
         res = []
@@ -50,23 +97,6 @@ async def on_message(message):
         msg = ''
         for res in sortedres:
             msg += res['name'] + ': ' + str(res['smooth']) + '\n'
-        await message.channel.send(msg)
-        return
-
-    if message.content.startswith('*da_bank'):
-        members = await message.guild.fetch_members(limit=150).flatten()
-        res = []
-        for member in members:
-            if (r.exists(member.name)) and member.bot == False:
-                data = eval(r.get(member.name).decode("utf-8"))
-                if 'GoonBucks' in data.keys():
-                    res.append({'name': member.name, 'bucks' : data['GoonBucks']})
-        
-        sortedres = sorted(res, key = lambda i: i['bucks'])
-        sortedres.reverse()
-        msg = ''
-        for res in sortedres:
-            msg += res['name'] + ' <:goonbuck:806019179567251516> ' + str(round(res['bucks'], 2)) + '\n'
         await message.channel.send(msg)
         return
 
@@ -109,6 +139,33 @@ async def on_message(message):
             r.set(members.name, str(data))
             await message.channel.send('Taxed ' + members.name + ' <:goonbuck:806019179567251516> ' + str(round(amount, 2)) + '.')
             return
+
+
+    if message.content.startswith('*da_bank'):
+        members = await message.guild.fetch_members(limit=150).flatten()
+        res = []
+        for member in members:
+            if (r.exists(member.name)) and member.bot == False:
+                data = eval(r.get(member.name).decode("utf-8"))
+                if 'GoonBucks' in data.keys():
+                    res.append({'name': member.name, 'bucks' : data['GoonBucks']})
+        
+        sortedres = sorted(res, key = lambda i: i['bucks'])
+        sortedres.reverse()
+        msg = ''
+        for res in sortedres:
+            msg += res['name'] + ' <:goonbuck:806019179567251516> ' + str(round(res['bucks'], 2)) + '\n'
+        await message.channel.send(msg)
+        return
+
+
+
+    if message.content.startswith('*balance'):
+            print('Requested')
+            hasEntry = r.exists(message.author.name)
+            if hasEntry == True:
+                data = eval(r.get(message.author.name).decode("utf-8"))
+                await message.channel.send('You have <:goonbuck:806019179567251516> ' + str(round(data['GoonBucks'],2)) + '.')
 
 
 
@@ -166,50 +223,7 @@ async def on_message(message):
         return
 
 
-    if message.content.startswith('*smooth'):
-        members = message.mentions[0]
-        if (message.author.id == members.id):
-                return
-        hasEntry = r.exists(members.name)
-        
-        data = {'wrinkles':0, 'smooths':0, 'GoonBucks':0}
-        if hasEntry == True:
-            data = eval(r.get(members.name).decode("utf-8"))
-        
-        data['smooths'] = data['smooths'] + 1
-        data['GoonBucks'] = data['GoonBucks'] - 1
-
-        r.set(members.name, str(data))
-        await message.channel.send('Gave ' + members.name + ' a smooth. He now has ' + str(data['smooths']) + '.')
-        return
-
-    if message.content.startswith('*balance'):
-            print('Requested')
-            hasEntry = r.exists(message.author.name)
-            if hasEntry == True:
-                data = eval(r.get(message.author.name).decode("utf-8"))
-                await message.channel.send('You have <:goonbuck:806019179567251516> ' + str(round(data['GoonBucks'],2)) + '.')
-
-
-
-    if message.content.startswith('*wrinkle'):
-        members = message.mentions[0]
-        if (message.author.id == members.id):
-            await message.channel.send('You cant give yourself a wrinkle dumbass.')
-            return
-        hasEntry = r.exists(members.name)
-        
-        data = {'wrinkles':0, 'smooths':0, 'GoonBucks':0}
-        if hasEntry == True:
-            data = eval(r.get(members.name).decode("utf-8"))
-        
-        data['wrinkles'] = data['wrinkles'] + 1
-        data['GoonBucks'] = data['GoonBucks'] + .5
-
-        r.set(members.name, str(data))
-        await message.channel.send('Gave ' + members.name + ' a wrinkle. He now has ' + str(data['wrinkles']) + '.')
-        return
-
+    
 
 
 async def Foo():
