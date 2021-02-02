@@ -1,3 +1,4 @@
 discord.py
 redis
 yahoo_fin
+requests
