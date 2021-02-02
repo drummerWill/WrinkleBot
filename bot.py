@@ -226,6 +226,7 @@ async def Foo():
                         else:
                             data['GoonBucks'] = 20
                     r.set(member.name, str(data))
+        print('Looped')
         await asyncio.sleep(30)    
 
 client.loop.create_task(Foo())
