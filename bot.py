@@ -5,6 +5,7 @@ from discord.ext import commands, tasks
 from yahoo_fin import stock_info as si 
 import asyncio
 import math
+import random
 
 intents = discord.Intents.default()
 intents.members = True  # Subscribe to the privileged members intent.
@@ -185,7 +186,28 @@ async def on_message(message):
                 await message.channel.send(msg)
         return
 
+    if message.content.startswith('*gamble'):
+        amount = float(message.content.split()[1]) 
+        if amount < 0:
+            return  
+        if (r.exists(message.author.name)):
+            data = eval(r.get(message.author.name).decode("utf-8"))
+            if('GoonBucks' in data.keys()):
+                if data['GoonBucks'] < amount:
+                    return
+                won = bool(random.getrandbits(1))
+                if won:
+                    data['GoonBucks'] = data['GoonBucks'] + amount
+                    await message.channel.send('You Won <:goonbuck:806019179567251516>' + str(amount) + '!!!')
 
+                else:
+                    data['GoonBucks'] = data['GoonBucks'] - amount
+                    await message.channel.send('You Lost <:goonbuck:806019179567251516>' + str(amount) + '...')
+                r.set(message.author.name, str(data))
+                
+
+                
+        return
     # if message.content.startswith('*great_reset'):
     #     members = await message.guild.fetch_members(limit=150).flatten()
     #     res = []
