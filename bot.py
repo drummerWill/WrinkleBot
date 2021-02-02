@@ -65,7 +65,7 @@ async def on_message(message):
         sortedres.reverse()
         msg = ''
         for res in sortedres:
-            msg += res['name'] + ':goonbuck: ' + str(round(res['bucks'], 2)) + '\n'
+            msg += res['name'] + ' <:goonbuck:806019179567251516> ' + str(round(res['bucks'], 2)) + '\n'
         await message.channel.send(msg)
         return
 
@@ -111,7 +111,7 @@ async def on_message(message):
         r.set(message.author.name, str(senderData))
 
         r.set(members.name, str(data))
-        await message.channel.send('Paid ' + members.name + '' + str(round(amount, 2)) + ' Goon Bucks.')
+        await message.channel.send('Paid ' + members.name + ' <:goonbuck:806019179567251516> ' + str(round(amount, 2)) + '.')
         return
 
 
@@ -136,7 +136,7 @@ async def on_message(message):
             hasEntry = r.exists(message.author.name)
             if hasEntry == True:
                 data = eval(r.get(message.author.name).decode("utf-8"))
-                await message.channel.send('You have :goonbuck: ' + str(round(data['GoonBucks'],2)) + '.')
+                await message.channel.send('You have <:goonbuck:806019179567251516> ' + str(round(data['GoonBucks'],2)) + '.')
 
 
 
