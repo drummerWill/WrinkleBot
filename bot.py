@@ -147,7 +147,7 @@ async def on_message(message):
             data = eval(r.get(message.author.name).decode("utf-8"))
             if('Positions' in data.keys()):
                 for position in data['Positions']:
-                    msg = msg + position['stonk'] + ': ' + str(position['shares']) + ' shares.' + '\n'
+                    msg = msg + position['stock'] + ': ' + str(position['shares']) + ' shares.' + '\n'
                 await message.channel.send(msg)
         return
 
