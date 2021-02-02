@@ -61,11 +61,11 @@ async def on_message(message):
                 if 'GoonBucks' in data.keys():
                     res.append({'name': member.name, 'bucks' : data['GoonBucks']})
         
-        sortedres = sorted(res, key = lambda i: i['GoonBucks'])
+        sortedres = sorted(res, key = lambda i: i['bucks'])
         sortedres.reverse()
         msg = ''
         for res in sortedres:
-            msg += res['name'] + ': ' + str(res['GoonBucks']) + '\n'
+            msg += res['name'] + ': ' + str(res['bucks']) + '\n'
         await message.channel.send(msg)
         return
 
