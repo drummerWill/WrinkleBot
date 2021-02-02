@@ -105,6 +105,27 @@ async def on_message(message):
 
 
 
+    if message.content.startswith('*bailout'):
+        if (message.author.name == 'Nobuzerker' or message.author.name == 'Yertle' or message.author.name == 'William'):
+            amount = float(message.content.split()[2])
+            if (amount < 0):
+                return
+            members = message.mentions[0]
+            hasEntry = r.exists(members.name)
+        
+
+            data = {'wrinkles':0, 'smooths':0, 'GoonBucks':20}
+            if hasEntry == True:
+                data = eval(r.get(members.name).decode("utf-8"))
+            
+            data['GoonBucks'] =data['GoonBucks'] + amount
+            
+        
+            r.set(members.name, str(data))
+            await message.channel.send('Bailed out ' + members.name + ' <:goonbuck:806019179567251516> ' + str(round(amount, 2)) + '.')
+            return
+
+
     if message.content.startswith('*pay'):
         amount = float(message.content.split()[2])
         if (amount < 0):
