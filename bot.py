@@ -109,15 +109,15 @@ async def Foo():
         for member in members:
             if ((member.voice != None) and (member.voice.self_mute == False) and (member.voice.self_deaf == False) and (member.voice.mute == False) and (member.voice.deaf == False)):
                 if any(goon.voice.channel.id == member.voice.channel.id and goon.id != member.id for goon in goodgoons):
-                    hasEntry = r.exists(members.name)
+                    hasEntry = r.exists(member.name)
                     data = {'wrinkles':0, 'smooths':0, 'GoonBucks':20}
                     if hasEntry == True:
-                        data = eval(r.get(members.name).decode("utf-8"))
+                        data = eval(r.get(member.name).decode("utf-8"))
                         if ('GoonBucks' in data.keys()):
                             data['GoonBucks'] = data['GoonBucks'] + .1
                         else:
                             data['GoonBucks'] = 20
-                    r.set(members.name, str(data))
+                    r.set(member.name, str(data))
     
     await asyncio.sleep(30)
 
