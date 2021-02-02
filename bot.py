@@ -239,7 +239,7 @@ async def Foo():
 
 def calculateWage(name):
     if (name== "YoungBumi"):
-        return .12
+        return .1
     return .1 
 
 
