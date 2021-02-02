@@ -52,6 +52,23 @@ async def on_message(message):
         await message.channel.send(msg)
         return
 
+    if message.content.startswith('*da_bank'):
+        members = await message.guild.fetch_members(limit=150).flatten()
+        res = []
+        for member in members:
+            if (r.exists(member.name)) and member.bot == False:
+                data = eval(r.get(member.name).decode("utf-8"))
+                if 'GoonBucks' in data.keys():
+                    res.append({'name': member.name, 'bucks' : data['GoonBucks']})
+        
+        sortedres = sorted(res, key = lambda i: i['GoonBucks'])
+        sortedres.reverse()
+        msg = ''
+        for res in sortedres:
+            msg += res['name'] + ': ' + str(res['GoonBucks']) + '\n'
+        await message.channel.send(msg)
+        return
+
     if message.content.startswith('*smooth'):
         members = message.mentions[0]
         if (message.author.id == members.id):
