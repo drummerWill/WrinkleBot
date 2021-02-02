@@ -221,7 +221,7 @@ async def on_message(message):
                         return 
                     #
                 data['LastDaily'] = date.today()
-                data['GoonBucks'] = data['GoonBucks'] + 100
+                data['GoonBucks'] = data['GoonBucks'] + 10
 
                 await message.channel.send('Collected Daily Login!')
                 r.set(message.author.name, str(data))
