@@ -65,7 +65,7 @@ async def on_message(message):
         sortedres.reverse()
         msg = ''
         for res in sortedres:
-            msg += res['name'] + ': ' + str(res['bucks']) + '\n'
+            msg += res['name'] + ': ' + str(round(res['bucks'], 2)) + '\n'
         await message.channel.send(msg)
         return
 
@@ -77,7 +77,7 @@ async def on_message(message):
             if (r.exists(member.name)) and member.bot == False:
                 data = eval(r.get(member.name).decode("utf-8"))
                 data['GoonBucks'] = 20
-                r.set(member.name, data)
+                r.set(member.name, str(data))
 
         return
 
@@ -103,7 +103,7 @@ async def on_message(message):
             hasEntry = r.exists(message.author.name)
             if hasEntry == True:
                 data = eval(r.get(message.author.name).decode("utf-8"))
-                await message.channel.send('You have ' + str(data['GoonBucks']) + ' GoonBucks.')
+                await message.channel.send('You have ' + str(round(data['GoonBucks'],2)) + ' GoonBucks.')
 
 
 
