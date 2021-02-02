@@ -123,6 +123,9 @@ async def on_message(message):
         if (r.exists(message.author.name)):
             data = eval(r.get(message.author.name).decode("utf-8"))
             if ('GoonBucks' in data.keys()):
+                if (data['GoonBucks'] < dollarAmount):
+                    await message.channel.send('Not Enough Money')
+                    return
                 data['GoonBucks'] = data['GoonBucks'] - dollarAmount
             
                 if('Positions' in data.keys()):
@@ -140,6 +143,37 @@ async def on_message(message):
             r.set(message.author.name, str(data))
             await message.channel.send(message.author.name + ' bought ' + str(shares) + ' shares of ' + stonk + '.')
             
+
+    if message.content.startswith('*sell'):
+        stonk = str(message.content.split()[1])
+        sellshares = float(message.content.split()[2])
+        if sellshares < 0:
+            return
+        price = si.get_live_price(stonk)
+        if math.isnan(price):
+            return
+        returnamount = sellshares*price
+        if math.isnan(returnamount):
+            return
+        if (r.exists(message.author.name)):
+            data = eval(r.get(message.author.name).decode("utf-8"))            
+            if('Positions' in data.keys()):
+                if (next((item for item in data['Positions'] if item["stock"] == stonk), None)):
+                        i = next((i for i, item in enumerate(data['Positions']) if item["stock"] == stonk))
+                        currentPosition = data['Positions'][i]
+                        if (currentPosition['shares'] < sellshares):
+                            await message.channel.send('You cant sell that many shares.')
+                            return
+                        currentPosition['shares'] = currentPosition['shares'] - sellshares
+                        data['GoonBucks'] = data['GoonBucks'] + returnamount
+                        if (currentPosition['shares'] < .000001):
+                            data['Positions'].pop(i)
+                        else:
+                            data['Positions'][i] = currentPosition
+                        r.set(message.author.name, str(data))
+                        await message.channel.send(message.author.name + ' sold ' + str(shares) + ' shares of ' + stonk + '.')
+
+
 
     if message.content.startswith('*positions'):    
         if (r.exists(message.author.name)):
