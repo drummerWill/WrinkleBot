@@ -94,7 +94,7 @@ async def on_message(message):
         senderHasEntry = r.exists(message.author.name)
         if senderHasEntry == False:
             return
-        senderData = eval(r.get(members.name).decode("utf-8"))
+        senderData = eval(r.get(message.author.name).decode("utf-8"))
         if (senderData['GoonBucks'] < amount):
             await message.channel.send('You dont have enough money')
             return
@@ -104,7 +104,7 @@ async def on_message(message):
         if hasEntry == True:
             data = eval(r.get(members.name).decode("utf-8"))
         
-        data['GoonBucks'] = data['GoonBucks'] + amount
+        data['GoonBucks'] =data['GoonBucks'] + amount
         senderData['GoonBucks'] = senderData['GoonBucks'] - amount
         
         
