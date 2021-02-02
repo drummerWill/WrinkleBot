@@ -69,6 +69,19 @@ async def on_message(message):
         await message.channel.send(msg)
         return
 
+
+    if message.content.startswith('*great_reset'):
+        members = await message.guild.fetch_members(limit=150).flatten()
+        res = []
+        for member in members:
+            if (r.exists(member.name)) and member.bot == False:
+                data = eval(r.get(member.name).decode("utf-8"))
+                data['GoonBucks'] = 20
+                r.set(member.name, data)
+
+        return
+
+
     if message.content.startswith('*smooth'):
         members = message.mentions[0]
         if (message.author.id == members.id):
