@@ -387,7 +387,7 @@ async def Foo():
 def calculateWage(member):
     wage = .1
     if (member.name == 'Gach'):
-        wage = 1.2
+        wage = .12
     if (member.voice.self_stream == True):
         wage = wage + .02
     if (member.voice.self_video == True):
