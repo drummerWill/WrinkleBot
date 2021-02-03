@@ -207,7 +207,7 @@ async def on_message(message):
 
     if message.content.startswith('*gamble'):
         amount = float(message.content.split()[1]) 
-        if amount < 0:
+        if amount < 1:
             return
         if (r.exists('casino') == False):
             r.set('casino', str(0)) 
