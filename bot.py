@@ -35,6 +35,7 @@ async def on_message(message):
         msg = msg + "*sell <stock> <amount> (sell amount in shares) \n"
         msg = msg + "*stonk <stock> (see stock price) \n"
         msg = msg + "*daily  (get daily login bonus) \n"
+        msg = msg + "*casino  (how much is the casino up with gambles) \n"
 
         
 
@@ -404,7 +405,9 @@ def calculateWage(member):
         wage = wage + .02
     if (member.is_on_mobile()):
         wage = .05
-    
+    if (member.name == 'bundy'):
+        wage == 0
+
     return wage
 
 
