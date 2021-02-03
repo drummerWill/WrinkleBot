@@ -6,7 +6,7 @@ from yahoo_fin import stock_info as si
 import asyncio
 import math
 import random
-from datetime import date, datetime
+from datetime import date
 import datetime
 
 intents = discord.Intents.default()
@@ -227,7 +227,7 @@ async def on_message(message):
                 if ('LastDaily' in data.keys()):
                     last = data['LastDaily']
                     today = date.today()
-                    timenow = datetime.now()
+                    timenow = datetime.datetime.now()
                     print(timenow)
                     if (last == today):
                         await message.channel.send('Already Claimed.')
