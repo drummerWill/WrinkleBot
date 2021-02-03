@@ -199,25 +199,35 @@ async def on_message(message):
                 await message.channel.send(msg)
         return
 
+    if message.content.startswith('*casino'):    
+        casino = eval(r.get('casino').decode("utf-8"))
+        await message.channel.send("The casino is up a total of <:goonbuck:806019179567251516>" + str(casino))
+        return
+
     if message.content.startswith('*gamble'):
         amount = float(message.content.split()[1]) 
         if amount < 0:
-            return  
+            return
+        if (r.exists('casino') == False):
+            r.set('casino', str(0)) 
         if (r.exists(message.author.name)):
             data = eval(r.get(message.author.name).decode("utf-8"))
+            casino = eval(r.get('casino').decode("utf-8"))
             if('GoonBucks' in data.keys()):
                 if data['GoonBucks'] < amount:
                     return
                 won = bool(random.getrandbits(1))
                 if won:
                     data['GoonBucks'] = data['GoonBucks'] + amount
+                    casino = casino - amount
                     await message.channel.send('You Won <:goonbuck:806019179567251516>' + str(amount) + '!!!')
 
                 else:
                     data['GoonBucks'] = data['GoonBucks'] - amount
+                    casino = casino + amount
                     await message.channel.send('You Lost <:goonbuck:806019179567251516>' + str(amount) + '...')
                 r.set(message.author.name, str(data))
-                   
+                r.set('casino', str(casino))   
         return
 
     if message.content.startswith('*daily'):
