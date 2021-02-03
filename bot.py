@@ -10,7 +10,7 @@ from datetime import date
 import datetime
 
 intents = discord.Intents.default()
-intents.members = True  # Subscribe to the privileged members intent.
+intents.members = True
 client = discord.Client(intents=intents) 
 token = os.getenv("DISCORD_BOT_TOKEN")
 r = redis.from_url(os.environ.get("REDISTOGO_URL"))
@@ -386,13 +386,15 @@ async def Foo():
 
 def calculateWage(member):
     wage = .1
-    if (member.voice.self_stream == True and member.name != 'Yertle'):
+    if (member.name == 'Gach'):
+        wage = 1.2
+    if (member.voice.self_stream == True):
         wage = wage + .02
     if (member.voice.self_video == True):
         wage = wage + .02
     if (member.is_on_mobile()):
         wage = .05
-
+    
     return wage
 
 
