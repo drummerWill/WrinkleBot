@@ -227,8 +227,6 @@ async def on_message(message):
                 if ('LastDaily' in data.keys()):
                     last = data['LastDaily']
                     today = date.today()
-                    timenow = datetime.datetime.now()
-                    print(timenow)
                     if (last == today):
                         await message.channel.send('Already Claimed.')
                         return 
