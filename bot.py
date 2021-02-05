@@ -405,9 +405,6 @@ def calculateWage(member):
         wage = wage + .02
     if (member.is_on_mobile()):
         wage = .05
-    if (member.name == 'bundy'):
-        wage == 0
-
     return wage
 
 
