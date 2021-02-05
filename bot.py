@@ -251,6 +251,27 @@ async def on_message(message):
 
                 
         return
+
+    if message.content.startswith('*stimmy'):
+        if (r.exists(message.author.name)):
+            data = eval(r.get(message.author.name).decode("utf-8"))
+            if('GoonBucks' in data.keys()):
+                if ('stimmy' in data.keys()):
+                    last = data['stimmy']
+                    today = date.today()
+                    if (last == today):
+                        await message.channel.send('Already Claimed.')
+                        return 
+                    
+                data['stimmy'] = date.today()
+                data['GoonBucks'] = data['GoonBucks'] + 1200
+
+                await message.channel.send('Collected Stimmy!')
+                r.set(message.author.name, str(data))
+                
+
+                
+        return
     # if message.content.startswith('*great_reset'):
     #     members = await message.guild.fetch_members(limit=150).flatten()
     #     res = []
