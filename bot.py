@@ -257,11 +257,8 @@ async def on_message(message):
             data = eval(r.get(message.author.name).decode("utf-8"))
             if('GoonBucks' in data.keys()):
                 if ('stimmy' in data.keys()):
-                    last = data['stimmy']
-                    today = date.today()
-                    if (last == today):
-                        await message.channel.send('Already Claimed.')
-                        return 
+                    await message.channel.send('Already Claimed.')
+                    return 
                     
                 data['stimmy'] = date.today()
                 data['GoonBucks'] = data['GoonBucks'] + 1200
