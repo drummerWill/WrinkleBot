@@ -79,7 +79,7 @@ async def on_message(message):
         await message.channel.send(msg)
         return
 
-if message.content.startswith('*smooth'):
+    if message.content.startswith('*smooth'):
         members = message.mentions[0]
         if (message.author.id == members.id):
                 return
