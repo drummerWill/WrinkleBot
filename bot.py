@@ -56,7 +56,7 @@ async def on_message(message):
         data['GoonBucks'] = data['GoonBucks'] - 1
 
         r.set(members.name, str(data))
-        await message.channel.send('Gave ' + members.name + ' a smooth. He now has ' + str(data['smooths']) + '.')
+        await message.channel.send('Gave ' + members.name + ' a smooth. They now have ' + str(data['smooths']) + '.')
         return
 
    
@@ -78,7 +78,7 @@ async def on_message(message):
         data['GoonBucks'] = data['GoonBucks'] + .5
 
         r.set(members.name, str(data))
-        await message.channel.send('Gave ' + members.name + ' a wrinkle. He now has ' + str(data['wrinkles']) + '.')
+        await message.channel.send('Gave ' + members.name + ' a wrinkle. They now have ' + str(data['wrinkles']) + '.')
         return
 
 
