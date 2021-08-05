@@ -39,9 +39,23 @@ def displaycount(user, userdata):
         msg += indivmsg
     return msg
 
+# lowtier = 0 
+# midtier = 0
+# hightier = 0
+# for i in range(1000000):
+#     selectedgachalist = random.choices(allgachas, weights=(90, 9.5, .5), k=1)[0]
+    
+#     if selectedgachalist['type'] == 'lowtier':
+#         lowtier += 1
+#     if selectedgachalist['type'] == 'midtier':
+#         midtier += 1
+#     if selectedgachalist['type'] == 'hightier':
+#         hightier += 1    
+   
 
-
-
+# print(lowtier)
+# print(midtier)
+# print(hightier)
 
 def roll(user, userdata):
 
