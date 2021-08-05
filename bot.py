@@ -299,9 +299,13 @@ async def on_message(message):
            if ('gacha' not in data.keys()):
                data['gacha'] = {'gachalist':[]}
            data['tickets'] = data['tickets'] - 1
-           reward, userdata = roll(message.author.name, data)
+           recieved, userdata = roll(message.author.name, data)
            r.set(message.author.name, str(userdata))
+           reward = 'You got ' + recieved['name'] + '!'
            await message.channel.send(reward)
+           imglink = recieved['image']
+           await message.channel.send(imglink)
+        
         return
 
     if message.content.startswith('*stimmy'):

@@ -2,9 +2,9 @@ import random
 
 
 gachas = {}
-gachas['1a'] =  {'name': 'William', 'link': 'kdfjgddfgjkkjdfg'}
-gachas['2a'] =  {'name': 'Dean', 'link': 'dfgkjh345dfgkjh'}
-
+# gachas['1a'] =  {'name': 'William', 'link': 'kdfjgddfgjkkjdfg'}
+# gachas['2a'] =  {'name': 'Dean', 'link': 'dfgkjh345dfgkjh'}
+gachas['3a'] =  {'name': 'Andrew', 'link': 'dfgkjh345dfgkjh', 'image': 'https://imgur.com/a/x1N18Sx.png'}
 
 def displaycount(user, userdata):
     msg = ''
@@ -53,6 +53,6 @@ def roll(user, userdata):
         
     print(userdata)
 
-    return reward, userdata
+    return recievedGacha, userdata
 
 
