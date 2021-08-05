@@ -13,7 +13,7 @@ def roll(user, userdata):
     #     amount = card['amount']
     #     gachaItem = gachas[card['id']]
         
-
+    print(userdata)
 
     return reward, userdata
 
