@@ -8,7 +8,8 @@ import math
 import random
 from datetime import date
 import datetime
-from gacha import roll
+from gacha import roll, displaycount
+
 intents = discord.Intents.default()
 intents.members = True
 client = discord.Client(intents=intents) 
@@ -253,6 +254,16 @@ async def on_message(message):
                 
 
                 
+        return
+
+    
+    if message.content.startswith('*inventory'):
+        if (r.exists(message.author.name)):
+           data = eval(r.get(message.author.name).decode("utf-8"))
+           if ('gacha' not in data.keys()):
+               return
+           msg = displaycount(message.author.name, data)
+           await message.channel.send(msg)
         return
 
     if message.content.startswith('*gacha'):
