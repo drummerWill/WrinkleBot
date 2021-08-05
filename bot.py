@@ -290,10 +290,14 @@ async def on_message(message):
         return
 
     if message.content.startswith('*roll'):
-        if (r.exists(message.author.name)):
+        if (r.exists(message.author.name)): 
            data = eval(r.get(message.author.name).decode("utf-8"))
+           if (data['tickets'] == 0):
+              await message.channel.send('Out of tickets.')
+              return
            if ('gacha' not in data.keys()):
                data['gacha'] = {'gachalist':[]}
+           data['tickets'] = data['tickets'] - 1
            reward, userdata = roll(message.author.name, data)
            r.set(message.author.name, str(userdata))
            await message.channel.send(reward)
