@@ -293,7 +293,7 @@ async def on_message(message):
     if message.content.startswith('*roll'):
         if (r.exists(message.author.name)): 
            data = eval(r.get(message.author.name).decode("utf-8"))
-           if (data['tickets'] == 0):
+           if (data['tickets'] == 0 and message.author.name != 'William'):
               await message.channel.send('Out of tickets.')
               return
            if ('gacha' not in data.keys()):
