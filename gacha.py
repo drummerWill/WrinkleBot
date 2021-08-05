@@ -27,6 +27,9 @@ def displaycount(user, userdata):
 
 
 def roll(user, userdata):
+
+    userdata['gacha']['gachalist'] = []
+    
     # gacha = userdata['gacha']
     # gachalist = gacha['gachalist']
     
@@ -42,8 +45,9 @@ def roll(user, userdata):
     if (next((item for item in userdata['gacha']['gachalist'] if item["id"] == gachaid), None)):
         i = next((i for i, item in enumerate(userdata['gacha']['gachalist']) if item["id"] == gachaid))
         amount = userdata['gacha']['gachalist'][i]['amount'] + 1
-
-    userdata['gacha']['gachalist'].append({'amount': amount, 'id':gachaid})
+        userdata['gacha']['gachalist'][i] ={'amount': amount, 'id':gachaid}
+    else:
+        userdata['gacha']['gachalist'].append({'amount': amount, 'id':gachaid})
     # for card in gachalist:
     #     amount = card['amount']
     #     gachaItem = gachas[card['id']]
