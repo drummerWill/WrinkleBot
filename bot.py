@@ -269,7 +269,7 @@ async def on_message(message):
                     if (last == today):
                         await message.channel.send('Already Claimed.')
                         return 
-                if ('tickets' not in data['tickets']):
+                if ('tickets' not in data.keys()):
                     data['tickets'] = 0    
                 data['LastPull'] = date.today()
                 data['tickets'] = data['tickets'] + 5
