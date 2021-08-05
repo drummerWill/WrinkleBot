@@ -52,7 +52,7 @@ def roll(user, userdata):
 
     #find the correct dictionary to look for 
 
-    selectedgachalist = random.choices(allgachas, weights=(90, 9.5, .5), k=1)
+    selectedgachalist = random.choices(allgachas, weights=(90, 9.5, .5), k=1)[0]
     gachaid = random.choice(list(selectedgachalist.keys()))
     recievedGacha = selectedgachalist[gachaid]
     reward = 'you got ' + recievedGacha['name']
