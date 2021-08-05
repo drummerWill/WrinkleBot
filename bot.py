@@ -8,7 +8,7 @@ import math
 import random
 from datetime import date
 import datetime
-
+from gacha import roll
 intents = discord.Intents.default()
 intents.members = True
 client = discord.Client(intents=intents) 
@@ -253,6 +253,16 @@ async def on_message(message):
                 
 
                 
+        return
+
+    if message.content.startswith('*gacha'):
+        if (r.exists(message.author.name)):
+           data = eval(r.get(message.author.name).decode("utf-8"))
+           if ('gacha' not in data.keys()):
+               data['gacha'] = {'gachalist':[]}
+           reward, userdata = roll(message.author.name, data)
+           r.set(message.author.name, str(userdata))
+           await message.channel.send(reward)
         return
 
     if message.content.startswith('*stimmy'):
