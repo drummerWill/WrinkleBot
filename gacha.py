@@ -6,18 +6,35 @@ gachas = {}
 # gachas['2a'] =  {'name': 'Dean', 'link': 'dfgkjh345dfgkjh'}
 gachas['3a'] =  {'name': 'Andrew', 'link': 'dfgkjh345dfgkjh', 'image': 'https://imgur.com/a/x1N18Sx.png'}
 
+bettergachas = {}
+bettergachas['1b'] = {'name': 'Andrew but better', 'link': 'dfgkjh345dfgkjh', 'image': 'https://imgur.com/a/x1N18Sx.png'}
+bestgachas = {}
+bettergachas['1c'] = {'name': 'Andrew but best', 'link': 'dfgkjh345dfgkjh', 'image': 'https://imgur.com/a/x1N18Sx.png'}
+
+
+
+allgachas = [gachas, bettergachas, bestgachas]
+
 def displaycount(user, userdata):
     msg = ''
      # gacha = userdata['gacha']
     # gachalist = gacha['gachalist']
     
 
+  
     #find the correct dictionary to look for 
 
     gachalist= userdata['gacha']['gachalist']
 
     for gachaitem in gachalist:
-        gacharich = gachas[gachaitem['id']]
+        dicttosearch = {}
+        if 'a' in gachaitem['id']:
+            dicttosearch = gachas 
+        if 'a' in gachaitem['id']:
+            dicttosearch = bettergachas 
+        if 'a' in gachaitem['id']:
+            dicttosearch = bestgachas 
+        gacharich = dicttosearch[gachaitem['id']]
         indivmsg = gacharich['name'] + ', ' + str(gachaitem['amount']) + '\n'
         msg += indivmsg
     return msg
@@ -35,9 +52,9 @@ def roll(user, userdata):
 
     #find the correct dictionary to look for 
 
-
-    gachaid = random.choice(list(gachas.keys()))
-    recievedGacha = gachas[gachaid]
+    selectedgachalist = random.choices(allgachas, weights=(90, 9.5, .5), k=1)
+    gachaid = random.choice(list(selectedgachalist.keys()))
+    recievedGacha = selectedgachalist[gachaid]
     reward = 'you got ' + recievedGacha['name']
 
     amount = 1
