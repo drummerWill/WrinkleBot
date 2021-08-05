@@ -28,7 +28,6 @@ def displaycount(user, userdata):
 
 def roll(user, userdata):
 
-    userdata['gacha']['gachalist'] = []
     
     # gacha = userdata['gacha']
     # gachalist = gacha['gachalist']
