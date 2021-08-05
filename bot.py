@@ -235,6 +235,8 @@ async def on_message(message):
                 r.set('casino', str(casino))   
         return
 
+
+
     if message.content.startswith('*daily'):
         if (r.exists(message.author.name)):
             data = eval(r.get(message.author.name).decode("utf-8"))
@@ -255,7 +257,28 @@ async def on_message(message):
 
                 
         return
+    
+    
+    if message.content.startswith('*ticket'):
+        if (r.exists(message.author.name)):
+            data = eval(r.get(message.author.name).decode("utf-8"))
+            if('gacha' in data.keys()):
+                if ('tickets' in data.keys()):
+                    last = data['LastPull']
+                    today = date.today()
+                    if (last == today):
+                        await message.channel.send('Already Claimed.')
+                        return 
+                    
+                data['LastPull'] = date.today()
+                data['tickets'] = data['tickets'] + 5
 
+                await message.channel.send('Collected Daily Tickets!')
+                r.set(message.author.name, str(data))
+                
+
+                
+        return
     
     if message.content.startswith('*inventory'):
         if (r.exists(message.author.name)):
@@ -266,7 +289,7 @@ async def on_message(message):
            await message.channel.send(msg)
         return
 
-    if message.content.startswith('*gacha'):
+    if message.content.startswith('*roll'):
         if (r.exists(message.author.name)):
            data = eval(r.get(message.author.name).decode("utf-8"))
            if ('gacha' not in data.keys()):
