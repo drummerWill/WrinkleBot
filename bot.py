@@ -260,6 +260,25 @@ async def on_message(message):
                 
         return
     
+
+    if message.content.startswith('*day1'):
+        if (r.exists(message.author.name)):
+            data = eval(r.get(message.author.name).decode("utf-8"))
+            if('tickets' in data.keys()):
+                if ('dayone' in data.keys()):
+                    await message.channel.send('Already Claimed.')
+                    return 
+                    
+                data['dayone'] = date.today()
+                data['tickets'] = data['tickets'] + 5
+
+                await message.channel.send('Collected day 1 bonus!')
+                r.set(message.author.name, str(data))
+                
+
+                
+        return
+
     
     if message.content.startswith('*ticket'):
         if (r.exists(message.author.name)):

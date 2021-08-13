@@ -36,6 +36,8 @@ bestgachas['4c'] = {'name': 'Sad Chef Adrian', 'image': 'pics/5 stars/sadadrian.
 
 allgachas = [gachas, bettergachas, bestgachas]
 
+
+
 def displaycount(user, userdata):
     msg = ''
      # gacha = userdata['gacha']
