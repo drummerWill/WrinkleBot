@@ -274,7 +274,7 @@ async def on_message(message):
                 if ('tickets' not in data.keys()):
                     data['tickets'] = 0    
                 data['LastPull'] = date.today()
-                data['tickets'] = data['tickets'] + 5
+                data['tickets'] = data['tickets'] + 3
 
                 await message.channel.send('Collected Daily Tickets!')
                 r.set(message.author.name, str(data))
