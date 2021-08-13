@@ -29,6 +29,9 @@ gachas['24a'] =   {'name': 'Sleepless Jared', 'image': 'pics/3 stars/sleepjared.
 gachas['25a'] =   {'name': 'Bubble Buddy Jared', 'image': 'pics/3 stars/bubblejared.png'}
 gachas['26a'] =   {'name': 'Noir Jared', 'image': 'pics/3 stars/noirjared.png'}
 gachas['27a'] =   {'name': 'Rouge Logan', 'image': 'pics/3 stars/rougelogan.png'}
+gachas['28a'] =   {'name': 'Bright Night Dean', 'image': 'pics/3 stars/bndean.png'}
+gachas['29a'] =   {'name': 'Grunkle Jacob', 'image': 'pics/3 stars/gjacob.png'}
+gachas['30a'] =   {'name': 'Luscious Lips Zach', 'image': 'pics/3 stars/llzach.png'}
 
 
 
