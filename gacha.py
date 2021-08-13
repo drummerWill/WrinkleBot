@@ -27,10 +27,10 @@ bettergachas['6b'] = {'name': 'Smexy Andy', 'image': 'pics/4 stars/smexyandy.png
 
 
 bestgachas = {}
-bettergachas['1c'] = {'name': 'Big Boss Bongos', 'image': 'pics/5 stars/bbbongos.png'}
-bettergachas['2c'] = {'name': 'Ellie with Sword', 'image': 'pics/5 stars/ellie with sword.png'}
-bettergachas['3c'] = {'name': 'Gpain', 'image': 'pics/5 stars/gpain.png'}
-bettergachas['4c'] = {'name': 'Sad Chef Adrian', 'image': 'pics/5 stars/sadadrian.png'}
+bestgachas['1c'] = {'name': 'Big Boss Bongos', 'image': 'pics/5 stars/bbbongos.png'}
+bestgachas['2c'] = {'name': 'Ellie with Sword', 'image': 'pics/5 stars/ellie with sword.png'}
+bestgachas['3c'] = {'name': 'Gpain', 'image': 'pics/5 stars/gpain.png'}
+bestgachas['4c'] = {'name': 'Sad Chef Adrian', 'image': 'pics/5 stars/sadadrian.png'}
 
 
 
@@ -51,9 +51,9 @@ def displaycount(user, userdata):
         dicttosearch = {}
         if 'a' in gachaitem['id']:
             dicttosearch = gachas 
-        if 'a' in gachaitem['id']:
+        if 'b' in gachaitem['id']:
             dicttosearch = bettergachas 
-        if 'a' in gachaitem['id']:
+        if 'c' in gachaitem['id']:
             dicttosearch = bestgachas 
         gacharich = dicttosearch[gachaitem['id']]
         indivmsg = gacharich['name'] + ', ' + str(gachaitem['amount']) + '\n'
@@ -87,7 +87,7 @@ def roll(user, userdata):
 
     #find the correct dictionary to look for 
 
-    selectedgachalist = random.choices(allgachas, weights=(90, 9.5, .5), k=1)[0]
+    selectedgachalist = random.choices(allgachas, weights=(1, 1, 1), k=1)[0]
     gachaid = random.choice(list(selectedgachalist.keys()))
     recievedGacha = selectedgachalist[gachaid]
     reward = 'you got ' + recievedGacha['name']
@@ -105,7 +105,7 @@ def roll(user, userdata):
         
 
     ## TEMP TO NOT AFFECT DB
-    userdata['gacha']['gachalist'] = []    
+    userdata['gacha']['tickets'] = 0    
     print(userdata)
 
     return recievedGacha, userdata
