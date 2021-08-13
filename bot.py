@@ -264,20 +264,22 @@ async def on_message(message):
     if message.content.startswith('*ticket'):
         if (r.exists(message.author.name)):
             data = eval(r.get(message.author.name).decode("utf-8"))
-            if('gacha' in data.keys()):
-                if ('tickets' in data.keys()):
-                    last = data['LastPull']
-                    today = date.today()
-                    if (last == today):
-                        await message.channel.send('Already Claimed. You have ' + str(data['tickets']))
-                        return 
-                if ('tickets' not in data.keys()):
-                    data['tickets'] = 0    
-                data['LastPull'] = date.today()
-                data['tickets'] = data['tickets'] + 3
+            if ('gacha' not in data.keys()):
+                data['gacha'] = {'gachalist':[]}
 
-                await message.channel.send('Collected Daily Tickets!')
-                r.set(message.author.name, str(data))
+            if ('tickets' in data.keys()):
+                last = data['LastPull']
+                today = date.today()
+                if (last == today):
+                    await message.channel.send('Already Claimed. You have ' + str(data['tickets']))
+                    return 
+            if ('tickets' not in data.keys()):
+                data['tickets'] = 0    
+            data['LastPull'] = date.today()
+            data['tickets'] = data['tickets'] + 3
+
+            await message.channel.send('Collected Daily Tickets!')
+            r.set(message.author.name, str(data))
                 
 
                 
