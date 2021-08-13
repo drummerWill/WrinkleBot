@@ -87,7 +87,7 @@ def roll(user, userdata):
 
     #find the correct dictionary to look for 
 
-    selectedgachalist = random.choices(allgachas, weights=(1, 1, 1), k=1)[0]
+    selectedgachalist = random.choices(allgachas, weights=(95, 4.5, .5), k=1)[0]
     gachaid = random.choice(list(selectedgachalist.keys()))
     recievedGacha = selectedgachalist[gachaid]
     reward = 'you got ' + recievedGacha['name']
@@ -105,7 +105,7 @@ def roll(user, userdata):
         
 
     ## TEMP TO NOT AFFECT DB
-    userdata['gacha']['tickets'] = 0    
+    userdata['tickets'] = 0    
     print(userdata)
 
     return recievedGacha, userdata
