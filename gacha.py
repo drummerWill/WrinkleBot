@@ -105,8 +105,8 @@ def roll(user, userdata):
         
 
     ## TEMP TO NOT AFFECT DB
-    # userdata['gacha']['gachalist'] = []
-    # userdata['tickets'] = 0    
+    userdata['gacha']['gachalist'] = []
+    userdata['tickets'] = 0    
     print(userdata)
 
     return recievedGacha, userdata

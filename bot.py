@@ -297,7 +297,7 @@ async def on_message(message):
         #    if message.author.name !='William':
         #         return 
            data = eval(r.get(message.author.name).decode("utf-8"))
-           if (data['tickets'] == 0 and message.author.name != 'William'):
+           if (data['tickets'] == 0):
               await message.channel.send('Out of tickets.')
               return
            if ('gacha' not in data.keys()):
