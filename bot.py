@@ -307,6 +307,7 @@ async def on_message(message):
            await message.channel.send(reward)
            imglink = recieved['image']
            await message.channel.send(imglink)
+           await message.channel.send(file=discord.File('acabadrian.png'))
         
         return
 
