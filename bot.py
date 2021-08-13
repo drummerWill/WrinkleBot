@@ -274,11 +274,11 @@ async def on_message(message):
             if hasEntry == True:
                 data = eval(r.get(members.name).decode("utf-8"))
             
-            data['tickets'] =data['tickets'] + amount
+            data['tickets'] =data['tickets'] + int(amount)
             
         
             r.set(members.name, str(data))
-            await message.channel.send('Gave ' + members.name + ' tickets: ' + str(round(amount, 2)) + '.')
+            await message.channel.send('Gave ' + members.name + ' tickets: ' + str(amount) + '.')
             return
 
 
