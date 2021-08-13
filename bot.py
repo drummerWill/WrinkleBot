@@ -303,11 +303,10 @@ async def on_message(message):
            data['tickets'] = data['tickets'] - 1
            recieved, userdata = roll(message.author.name, data)
            r.set(message.author.name, str(userdata))
-           reward = 'You got ' + recieved['name'] + '!'
+           reward = message.author.name + ' got ' + recieved['name'] + '!'
            await message.channel.send(reward)
            imglink = recieved['image']
-           await message.channel.send(imglink)
-           await message.channel.send(file=discord.File('acabadrian.png'))
+           await message.channel.send(file=discord.File(imglink))
         
         return
 
