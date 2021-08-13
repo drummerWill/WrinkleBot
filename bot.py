@@ -261,7 +261,7 @@ async def on_message(message):
         return
     
 
-    if message.content.startswith('*buyticket'):
+    if message.content.startswith('*purchaseticket'):
         if (r.exists(message.author.name)):
             data = eval(r.get(message.author.name).decode("utf-8"))
             if('GoonBucks' in data.keys()):
