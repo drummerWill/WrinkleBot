@@ -21,9 +21,14 @@ gachas['16a'] =   {'name': 'Music Man William', 'image': 'pics/3 stars/mmwill.pn
 gachas['17a'] =   {'name': 'Questionable Pirate William', 'image': 'pics/3 stars/pirwill.png'}
 gachas['18a'] =   {'name': 'Great Pride William', 'image': 'pics/3 stars/pridewill.png'}
 gachas['19a'] =   {'name': 'Scuffed Adrian', 'image': 'pics/3 stars/scuffedadrian.png'}
-gachas['19a'] =   {'name': 'Noble Hero Andrew', 'image': 'pics/3 stars/nobleandy.png'}
-gachas['20a'] =   {'name': 'Popcorn Ruler William', 'image': 'pics/3 stars/popcornwilly.png'}
-gachas['21a'] =   {'name': 'Smooth Poser Andrew', 'image': 'pics/3 stars/posandy.png'}
+gachas['20a'] =   {'name': 'Noble Hero Andrew', 'image': 'pics/3 stars/nobleandy.png'}
+gachas['21a'] =   {'name': 'Popcorn Ruler William', 'image': 'pics/3 stars/popcornwilly.png'}
+gachas['22a'] =   {'name': 'Smooth Poser Andrew', 'image': 'pics/3 stars/posandy.png'}
+gachas['23a'] =   {'name': 'Young Bard Dean', 'image': 'pics/3 stars/barddean.png'}
+gachas['24a'] =   {'name': 'Sleepless Jared', 'image': 'pics/3 stars/sleepjared.png'}
+gachas['25a'] =   {'name': 'Bubble Buddy Jared', 'image': 'pics/3 stars/bubblejared.png'}
+gachas['26a'] =   {'name': 'Noir Jared', 'image': 'pics/3 stars/noirjared.png'}
+
 
 
 bettergachas = {}
