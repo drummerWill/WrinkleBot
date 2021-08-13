@@ -21,7 +21,9 @@ gachas['16a'] =   {'name': 'Music Man William', 'image': 'pics/3 stars/mmwill.pn
 gachas['17a'] =   {'name': 'Questionable Pirate William', 'image': 'pics/3 stars/pirwill.png'}
 gachas['18a'] =   {'name': 'Great Pride William', 'image': 'pics/3 stars/pridewill.png'}
 gachas['19a'] =   {'name': 'Scuffed Adrian', 'image': 'pics/3 stars/scuffedadrian.png'}
-
+gachas['19a'] =   {'name': 'Noble Hero Andrew', 'image': 'pics/3 stars/nobleandy.png'}
+gachas['20a'] =   {'name': 'Popcorn Ruler William', 'image': 'pics/3 stars/popcornwilly.png'}
+gachas['21a'] =   {'name': 'Smooth Poser Andrew', 'image': 'pics/3 stars/posandy.png'}
 
 
 bettergachas = {}
@@ -36,6 +38,7 @@ bettergachas['8b'] = {'name': 'Communist Jared', 'image': 'pics/4 stars/commjare
 bettergachas['9b'] = {'name': 'Cosplay Dean and Jared', 'image': 'pics/4 stars/cosplay.png'}
 bettergachas['10b'] = {'name': 'Immovable Object Logan', 'image': 'pics/4 stars/immlogan.png'}
 bettergachas['11b'] = {'name': 'Unstoppable Force David', 'image': 'pics/4 stars/undavid.png'}
+bettergachas['12b'] = {'name': 'Lonely Logan', 'image': 'pics/4 stars/lonelylogan.png'}
 
 
 bestgachas = {}
