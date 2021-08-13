@@ -50,15 +50,19 @@ def displaycount(user, userdata):
     gachalist= userdata['gacha']['gachalist']
 
     for gachaitem in gachalist:
+        star = ''
         dicttosearch = {}
         if 'a' in gachaitem['id']:
-            dicttosearch = gachas 
+            dicttosearch = gachas
+            star = '3*' 
         if 'b' in gachaitem['id']:
             dicttosearch = bettergachas 
+            star = '4*'
         if 'c' in gachaitem['id']:
             dicttosearch = bestgachas 
+            star = '5*'
         gacharich = dicttosearch[gachaitem['id']]
-        indivmsg = gacharich['name'] + ', ' + str(gachaitem['amount']) + '\n'
+        indivmsg = gacharich['name'] + ', ' + star + ', ' + str(gachaitem['amount']) + '\n'
         msg += indivmsg
     return msg
 
