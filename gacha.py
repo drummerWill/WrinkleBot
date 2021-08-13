@@ -2,14 +2,13 @@ import random
 
 
 gachas = {}
-# gachas['1a'] =  {'name': 'William', 'link': 'kdfjgddfgjkkjdfg'}
-# gachas['2a'] =  {'name': 'Dean', 'link': 'dfgkjh345dfgkjh'}
-gachas['3a'] =  {'name': 'Andrew', 'link': 'dfgkjh345dfgkjh', 'image': 'https://imgur.com/a/x1N18Sx.png'}
+gachas['1a'] =  {'name': 'Antman David', 'image': 'pics/3 stars/antdavid.png'}
+gachas['2a'] =  {'name': 'Deep Banana Jacob', 'image': 'pics/3 stars/bananajacob.png'}
 
 bettergachas = {}
-bettergachas['1b'] = {'name': 'Andrew but better', 'link': 'dfgkjh345dfgkjh', 'image': 'https://imgur.com/a/x1N18Sx.png'}
+bettergachas['1b'] = {'name': 'ACAB Adrian', 'image': 'pics/4 stars/acabadrian.png'}
 bestgachas = {}
-bettergachas['1c'] = {'name': 'Andrew but best', 'link': 'dfgkjh345dfgkjh', 'image': 'https://imgur.com/a/x1N18Sx.png'}
+bettergachas['1c'] = {'name': 'Ellie with Sword', 'image': 'pics/5 stars/ellie with sword.png'}
 
 
 
