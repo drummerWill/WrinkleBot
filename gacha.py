@@ -103,6 +103,9 @@ def roll(user, userdata):
     #     amount = card['amount']
     #     gachaItem = gachas[card['id']]
         
+
+    ## TEMP TO NOT AFFECT DB
+    userdata['gacha']['gachalist'] = []    
     print(userdata)
 
     return recievedGacha, userdata
