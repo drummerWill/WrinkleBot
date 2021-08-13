@@ -261,6 +261,44 @@ async def on_message(message):
         return
     
 
+    if message.content.startswith('*buyticket'):
+        if (r.exists(message.author.name)):
+            data = eval(r.get(message.author.name).decode("utf-8"))
+            if('GoonBucks' in data.keys()):
+                if ('tickets' in data.keys()):
+                    if data['GoonBucks'] < 10:
+                        return
+                    if ('LastTicket' in data.keys()):
+                        last = data['LastTicket']
+                        today = date.today()
+                        if (last == today):
+                            numpurchased = data['NumPurchased'] 
+                            if numpurchased > 5:
+                                await message.channel.send('Already Hit Limit.')
+                                return 
+                            data['NumPurchased'] = numpurchased + 1
+                            data['GoonBucks'] = data['GoonBucks'] - 10
+
+                        else:
+                            data['NumPurchased'] = 1
+                            data['LastTicket'] = date.today()
+                            data['GoonBucks'] = data['GoonBucks'] - 10
+
+                    else:
+                        data['LastTicket'] = date.today()
+                        data['NumPurchased'] = 1
+                        data['GoonBucks'] = data['GoonBucks'] - 10
+
+                    await message.channel.send('Bought Ticket!')
+                    r.set(message.author.name, str(data))
+                
+
+                
+        return
+
+
+
+
     if message.content.startswith('*gift'):
         if (message.author.name == 'William'):
             amount = float(message.content.split()[2])
