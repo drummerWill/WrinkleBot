@@ -270,7 +270,7 @@ async def on_message(message):
                     today = date.today()
                     if (last == today):
                         await message.channel.send('Already Claimed.')
-                        return 
+                        #return 
                 if ('tickets' not in data.keys()):
                     data['tickets'] = 0    
                 data['LastPull'] = date.today()
