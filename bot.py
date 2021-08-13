@@ -261,6 +261,27 @@ async def on_message(message):
         return
     
 
+    if message.content.startswith('*gift'):
+        if (message.author.name == 'William'):
+            amount = float(message.content.split()[2])
+            if (amount < 0):
+                return
+            members = message.mentions[0]
+            hasEntry = r.exists(members.name)
+        
+
+            data = {'wrinkles':0, 'smooths':0, 'GoonBucks':20}
+            if hasEntry == True:
+                data = eval(r.get(members.name).decode("utf-8"))
+            
+            data['tickets'] =data['tickets'] + amount
+            
+        
+            r.set(members.name, str(data))
+            await message.channel.send('Gave ' + members.name + ' tickets: ' + str(round(amount, 2)) + '.')
+            return
+
+
     if message.content.startswith('*day1'):
         if (r.exists(message.author.name)):
             data = eval(r.get(message.author.name).decode("utf-8"))

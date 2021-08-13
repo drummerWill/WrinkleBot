@@ -28,6 +28,7 @@ gachas['23a'] =   {'name': 'Young Bard Dean', 'image': 'pics/3 stars/barddean.pn
 gachas['24a'] =   {'name': 'Sleepless Jared', 'image': 'pics/3 stars/sleepjared.png'}
 gachas['25a'] =   {'name': 'Bubble Buddy Jared', 'image': 'pics/3 stars/bubblejared.png'}
 gachas['26a'] =   {'name': 'Noir Jared', 'image': 'pics/3 stars/noirjared.png'}
+gachas['27a'] =   {'name': 'Rouge Logan', 'image': 'pics/3 stars/rougelogan.png'}
 
 
 
@@ -74,13 +75,13 @@ def displaycount(user, userdata):
         dicttosearch = {}
         if 'a' in gachaitem['id']:
             dicttosearch = gachas
-            star = '3*' 
+            star = '3 :star:' 
         if 'b' in gachaitem['id']:
             dicttosearch = bettergachas 
-            star = '4*'
+            star = '4 :star:'
         if 'c' in gachaitem['id']:
             dicttosearch = bestgachas 
-            star = '5*'
+            star = '5 :star:'
         gacharich = dicttosearch[gachaitem['id']]
         indivmsg = gacharich['name'] + ', ' + star + ', ' + str(gachaitem['amount']) + '\n'
         msg += indivmsg
