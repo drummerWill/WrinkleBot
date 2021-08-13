@@ -12,6 +12,15 @@ gachas['7a'] =   {'name': 'MAGA Ellie', 'image': 'pics/3 stars/magaellie.png'}
 gachas['8a'] =   {'name': 'OwO Pan', 'image': 'pics/3 stars/owopan.png'}
 gachas['9a'] =   {'name': 'Peep Boy Dean', 'image': 'pics/3 stars/pbdean.png'}
 gachas['10a'] =   {'name': 'Tactical Sean', 'image': 'pics/3 stars/tacticalsean.png'}
+gachas['11a'] =   {'name': 'Medium Rare Josh', 'image': 'pics/3 stars/burntjosh.png'}
+gachas['12a'] =   {'name': 'Abusive Logi', 'image': 'pics/3 stars/abulogan.png'}
+gachas['13a'] =   {'name': 'Communist Jacob', 'image': 'pics/3 stars/commjacob.png'}
+gachas['14a'] =   {'name': 'Communist Logan', 'image': 'pics/3 stars/commlogan.png'}
+gachas['15a'] =   {'name': 'Hungry Andy', 'image': 'pics/3 stars/hungryandy.png'}
+gachas['16a'] =   {'name': 'Music Man William', 'image': 'pics/3 stars/mmwill.png'}
+gachas['17a'] =   {'name': 'Questionable Pirate William', 'image': 'pics/3 stars/pirwill.png'}
+gachas['18a'] =   {'name': 'Great Pride William', 'image': 'pics/3 stars/pridewill.png'}
+gachas['19a'] =   {'name': 'Scuffed Adrian', 'image': 'pics/3 stars/scuffedadrian.png'}
 
 
 
@@ -23,8 +32,10 @@ bettergachas['4b'] = {'name': 'Hype Bundy', 'image': 'pics/4 stars/hypebundy.png
 bettergachas['5b'] = {'name': 'Nothin Personnel Pan', 'image': 'pics/4 stars/nppan.png'}
 bettergachas['6b'] = {'name': 'Smexy Andy', 'image': 'pics/4 stars/smexyandy.png'}
 bettergachas['7b'] = {'name': 'Anime Josh and Adrian', 'image': 'pics/4 stars/animejosh.png'}
-
-
+bettergachas['8b'] = {'name': 'Communist Jared', 'image': 'pics/4 stars/commjared.png'}
+bettergachas['9b'] = {'name': 'Cosplay Dean and Jared', 'image': 'pics/4 stars/cosplay.png'}
+bettergachas['10b'] = {'name': 'Immovable Object Logan', 'image': 'pics/4 stars/immlogan.png'}
+bettergachas['11b'] = {'name': 'Unstoppable Force David', 'image': 'pics/4 stars/undavid.png'}
 
 
 bestgachas = {}
