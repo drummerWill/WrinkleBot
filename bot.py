@@ -46,6 +46,8 @@ async def on_message(message):
         msg = "*roll (roll for a goon card) \n"
         msg = msg + "*ticket  (get daily tickets) \n"
         msg = msg + "*inventory  (display your goons) \n"
+        msg = msg + "*purchaseticket  (buys a ticket for 250 goonbucks) \n"
+    
         await message.channel.send(msg)
 
 
@@ -266,7 +268,7 @@ async def on_message(message):
             data = eval(r.get(message.author.name).decode("utf-8"))
             if('GoonBucks' in data.keys()):
                 if ('tickets' in data.keys()):
-                    if data['GoonBucks'] < 10:
+                    if data['GoonBucks'] < 250:
                         return
                     if ('LastTicket' in data.keys()):
                         last = data['LastTicket']
@@ -277,17 +279,19 @@ async def on_message(message):
                                 await message.channel.send('Already Hit Limit.')
                                 return 
                             data['NumPurchased'] = numpurchased + 1
-                            data['GoonBucks'] = data['GoonBucks'] - 10
-
+                            data['GoonBucks'] = data['GoonBucks'] - 250
+                            data['tickets'] = data['tickets'] + 1
                         else:
                             data['NumPurchased'] = 1
                             data['LastTicket'] = date.today()
-                            data['GoonBucks'] = data['GoonBucks'] - 10
+                            data['GoonBucks'] = data['GoonBucks'] - 250
+                            data['tickets'] = data['tickets'] + 1
 
                     else:
                         data['LastTicket'] = date.today()
                         data['NumPurchased'] = 1
-                        data['GoonBucks'] = data['GoonBucks'] - 10
+                        data['GoonBucks'] = data['GoonBucks'] - 250
+                        data['tickets'] = data['tickets'] + 1
 
                     await message.channel.send('Bought Ticket!')
                     r.set(message.author.name, str(data))
