@@ -55,6 +55,12 @@ bestgachas['1c'] = {'name': 'Big Boss Bongos', 'image': 'pics/5 stars/bbbongos.p
 bestgachas['2c'] = {'name': 'Ellie with Sword', 'image': 'pics/5 stars/ellie with sword.png'}
 bestgachas['3c'] = {'name': 'Gpain', 'image': 'pics/5 stars/gpain.png'}
 bestgachas['4c'] = {'name': 'Sad Chef Adrian', 'image': 'pics/5 stars/sadadrian.png'}
+bestgachas['5c'] = {'name': 'Bucket Head Logan', 'image': 'pics/5 stars/bucketlogan.png'}
+bestgachas['6c'] = {'name': 'Dirty Dancin Jared', 'image': 'pics/5 stars/ddjared.png'}
+bestgachas['7c'] = {'name': 'Kyle on Elsa', 'image': 'pics/5 stars/kyleelsa.png'}
+bestgachas['8c'] = {'name': 'MilkW', 'image': 'pics/5 stars/milkw.png'}
+bestgachas['9c'] = {'name': 'Super Dean', 'image': 'pics/5 stars/superdean.png'}
+bestgachas['10c'] = {'name': 'Toe Goblin Sean', 'image': 'pics/5 stars/toesean.png'}
 
 
 
