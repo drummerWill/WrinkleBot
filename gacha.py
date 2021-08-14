@@ -1,6 +1,5 @@
 import random
-
-
+from PIL import Image, ImageOps
 gachas = {}
 gachas['1a'] =  {'name': 'Antman David', 'image': 'pics/3 stars/antdavid.png'}
 gachas['2a'] =  {'name': 'Deep Banana Jacob', 'image': 'pics/3 stars/bananajacob.png'}
@@ -89,7 +88,33 @@ allgachas = [gachas, bettergachas, bestgachas]
 #     except:
 #         print('ohwell')
     
+
+
+
+def concat_images(image_paths, size, shape=None):
+    # Open images and resize them
+    width, height = size
+    images = map(Image.open, image_paths)
+    images = [ImageOps.fit(image, size, Image.ANTIALIAS) 
+              for image in images]
     
+    # Create canvas for the final image with total size
+    shape = shape if shape else (1, len(images))
+    image_size = (width * shape[1], height * shape[0])
+    image = Image.new('RGB', image_size)
+    
+    # Paste images into final image
+    for row in range(shape[0]):
+        for col in range(shape[1]):
+            offset = width * col, height * row
+            idx = row * shape[1] + col
+            image.paste(images[idx], offset)
+    
+    return image
+
+
+
+
     
 
 
@@ -100,7 +125,7 @@ def displaycount(user, userdata):
      # gacha = userdata['gacha']
     # gachalist = gacha['gachalist']
     
-
+    images = []
   
     #find the correct dictionary to look for 
 
@@ -114,21 +139,28 @@ def displaycount(user, userdata):
             star = ':star: :star: :star:'
             gacharich = dicttosearch[gachaitem['id']]
             indivmsg = str(gachaitem['amount']) + 'x ' + gacharich['name'] + ' (' + star + ') ' + '\n'
+            images.append(gacharich['image'])
             threestars.append(indivmsg) 
         if 'b' in gachaitem['id']:
             dicttosearch = bettergachas 
             star = ':star: :star: :star: :star:'
             gacharich = dicttosearch[gachaitem['id']]
             indivmsg = str(gachaitem['amount']) + 'x ' + gacharich['name'] + ' (' + star + ') ' + '\n'
+            images.append(gacharich['image'])
             fourstars.append(indivmsg)
         if 'c' in gachaitem['id']:
             dicttosearch = bestgachas 
             star = ':star: :star: :star: :star: :star:'
             gacharich = dicttosearch[gachaitem['id']]
             indivmsg = str(gachaitem['amount']) + 'x ' + gacharich['name'] + ' (' + star + ') ' + '\n'
+            images.append(gacharich['image'])
             fivestars.append(indivmsg)
+
+    image = concat_images(images, (300, 300))
+    imagepath = 'testImage1.jpg'
+    image.save('testImage1.jpg', 'JPEG')
     msg = ''.join(fivestars) + ''.join(fourstars) + ''.join(threestars)
-    return msg
+    return msg, imagepath
 
 # lowtier = 0 
 # midtier = 0

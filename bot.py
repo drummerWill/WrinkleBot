@@ -372,8 +372,11 @@ async def on_message(message):
            data = eval(r.get(message.author.name).decode("utf-8"))
            if ('gacha' not in data.keys()):
                return
-           msg = displaycount(message.author.name, data)
+           msg, imagepath = displaycount(message.author.name, data)
            await message.channel.send(msg)
+           if (message.author.name == 'William'):
+                await message.channel.send(file=discord.File(imagepath))
+
         return
 
     # if message.content.startswith('*show'):
