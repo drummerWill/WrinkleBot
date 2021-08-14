@@ -160,7 +160,7 @@ def displaycount(user, userdata):
     imageheight = math.ceil(len(images)/4)
     needed = imageheight*4
     for i in range(needed-len(images)):
-        images.append('pics/3 stars/fhorngach.png')
+        images.append('pics/blank.png')
     image = concat_images(images, (500, 850), (imageheight, 4))
     imagepath = 'testImage1.jpg'
     image.save('testImage1.jpg', 'JPEG')
