@@ -63,7 +63,9 @@ allgachas = [gachas, bettergachas, bestgachas]
 
 
 def displaycount(user, userdata):
-    msg = ''
+    threestars = []
+    fourstars = []
+    fivestars = []
      # gacha = userdata['gacha']
     # gachalist = gacha['gachalist']
     
@@ -78,16 +80,23 @@ def displaycount(user, userdata):
         dicttosearch = {}
         if 'a' in gachaitem['id']:
             dicttosearch = gachas
-            star = ':star: :star: :star:' 
+            star = ':star: :star: :star:'
+            gacharich = dicttosearch[gachaitem['id']]
+            indivmsg = str(gachaitem['amount']) + 'x ' + gacharich['name'] + ' (' + star + ') ' + '\n'
+            threestars.append(indivmsg) 
         if 'b' in gachaitem['id']:
             dicttosearch = bettergachas 
             star = ':star: :star: :star: :star:'
+            gacharich = dicttosearch[gachaitem['id']]
+            indivmsg = str(gachaitem['amount']) + 'x ' + gacharich['name'] + ' (' + star + ') ' + '\n'
+            fourstars.append(indivmsg)
         if 'c' in gachaitem['id']:
             dicttosearch = bestgachas 
             star = ':star: :star: :star: :star: :star:'
-        gacharich = dicttosearch[gachaitem['id']]
-        indivmsg = str(gachaitem['amount']) + 'x ' + gacharich['name'] + ' (' + star + ') ' + '\n'
-        msg += indivmsg
+            gacharich = dicttosearch[gachaitem['id']]
+            indivmsg = str(gachaitem['amount']) + 'x ' + gacharich['name'] + ' (' + star + ') ' + '\n'
+            fivestars.append(indivmsg)
+    msg = ''.join(threestars) + ''.join(fourstars) + ''.join(fivestars)
     return msg
 
 # lowtier = 0 
