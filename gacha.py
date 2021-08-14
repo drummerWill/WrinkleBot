@@ -158,7 +158,7 @@ def displaycount(user, userdata):
             fivestars.append(indivmsg)
 
     imageheight = math.ceil(len(images)/4)
-    image = concat_images(images, (500, 850), (imageheight, 4))
+    image = concat_images(images, (500, 850), [imageheight, 4])
     imagepath = 'testImage1.jpg'
     image.save('testImage1.jpg', 'JPEG')
     msg = ''.join(fivestars) + ''.join(fourstars) + ''.join(threestars)
