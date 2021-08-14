@@ -3,3 +3,4 @@ redis
 yahoo_fin
 requests
 pandas
+PIL
