@@ -8,7 +8,7 @@ import math
 import random
 from datetime import date
 import datetime
-from gacha import roll, displaycount
+from gacha import displayRoster, roll, displaycount, showImage
 
 intents = discord.Intents.default()
 intents.members = True
@@ -372,21 +372,29 @@ async def on_message(message):
            data = eval(r.get(message.author.name).decode("utf-8"))
            if ('gacha' not in data.keys()):
                return
-           msg, imagepath = displaycount(message.author.name, data)
+           msg = displaycount(message.author.name, data)
            await message.channel.send(msg)
-           if (message.author.name == 'William'):
-                await message.channel.send(file=discord.File(imagepath))
+        return
+
+    if message.content.startswith('*roster'):
+        if (r.exists(message.author.name)):
+           data = eval(r.get(message.author.name).decode("utf-8"))
+           if ('gacha' not in data.keys()):
+               return
+           imagepath = displayRoster(message.author.name, data)
+           await message.channel.send(file=discord.File(imagepath))
 
         return
 
-    # if message.content.startswith('*show'):
-    #     if (r.exists(message.author.name)):
-    #        data = eval(r.get(message.author.name).decode("utf-8"))
-    #        if ('gacha' not in data.keys()):
-    #            return
-    #        msg = displaycount(message.author.name, data)
-    #        await message.channel.send(msg)
-    #     return
+    if message.content.startswith('*show'):
+        if (r.exists(message.author.name)):
+           data = eval(r.get(message.author.name).decode("utf-8"))
+           if ('gacha' not in data.keys()):
+               return
+           name = message.content[6:]
+           imagepath = showImage(message.author.name, data, name)
+           await message.channel.send(file=discord.File(imagepath))
+        return
 
     if message.content.startswith('*roll'):
         if (r.exists(message.author.name)):
