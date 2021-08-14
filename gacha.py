@@ -60,6 +60,31 @@ bestgachas['4c'] = {'name': 'Sad Chef Adrian', 'image': 'pics/5 stars/sadadrian.
 
 allgachas = [gachas, bettergachas, bestgachas]
 
+# def displayImage(user, userdata, search):
+#     searchName = search
+    
+#     try:
+#         id = list(gachas.keys())[list(gachas.values()).index('searchName')]
+#         gachaRich = gachas['id']
+#         return gachaRich['image']
+#     except:
+#         print('ohwell')
+    
+#     try:
+#         id = list(gachas.keys())[list(gachas.values()).index('searchName')]
+#         gachaRich = gachas['id']
+#         return gachaRich['image']
+#     except:
+#         print('ohwell')
+#     try:
+#         id = list(gachas.keys())[list(gachas.values()).index('searchName')]
+#         gachaRich = gachas['id']
+#         return gachaRich['image']
+#     except:
+#         print('ohwell')
+    
+    
+    
 
 
 def displaycount(user, userdata):

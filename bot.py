@@ -376,6 +376,15 @@ async def on_message(message):
            await message.channel.send(msg)
         return
 
+    # if message.content.startswith('*show'):
+    #     if (r.exists(message.author.name)):
+    #        data = eval(r.get(message.author.name).decode("utf-8"))
+    #        if ('gacha' not in data.keys()):
+    #            return
+    #        msg = displaycount(message.author.name, data)
+    #        await message.channel.send(msg)
+    #     return
+
     if message.content.startswith('*roll'):
         if (r.exists(message.author.name)):
         #    if message.author.name !='William':
