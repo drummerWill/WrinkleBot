@@ -96,7 +96,7 @@ def displaycount(user, userdata):
             gacharich = dicttosearch[gachaitem['id']]
             indivmsg = str(gachaitem['amount']) + 'x ' + gacharich['name'] + ' (' + star + ') ' + '\n'
             fivestars.append(indivmsg)
-    msg = ''.join(threestars) + ''.join(fourstars) + ''.join(fivestars)
+    msg = ''.join(fivestars) + ''.join(fourstars) + ''.join(threestars)
     return msg
 
 # lowtier = 0 
