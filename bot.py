@@ -45,7 +45,9 @@ async def on_message(message):
     if message.content.startswith('*gacha'):
         msg = "*roll (roll for a goon card) \n"
         msg = msg + "*ticket  (get daily tickets) \n"
-        msg = msg + "*inventory  (display your goons) \n"
+        msg = msg + "*inventory  (display your goons (text)) \n"
+        msg = msg + "*roster  (display your goons (combined image)) \n"
+        msg = msg + "*show <card>  (display a specific goon) \n"
         msg = msg + "*purchaseticket  (buys a ticket for 250 goonbucks) \n"
     
         await message.channel.send(msg)
