@@ -1,4 +1,5 @@
 import random
+import math
 from PIL import Image, ImageOps
 gachas = {}
 gachas['1a'] =  {'name': 'Antman David', 'image': 'pics/3 stars/antdavid.png'}
@@ -156,7 +157,8 @@ def displaycount(user, userdata):
             images.append(gacharich['image'])
             fivestars.append(indivmsg)
 
-    image = concat_images(images, (500, 850))
+    imageheight = math.ceil(len(images)/4)
+    image = concat_images(images, (500, 850), (imageheight, 4))
     imagepath = 'testImage1.jpg'
     image.save('testImage1.jpg', 'JPEG')
     msg = ''.join(fivestars) + ''.join(fourstars) + ''.join(threestars)
