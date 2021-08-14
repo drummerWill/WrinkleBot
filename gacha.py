@@ -156,7 +156,7 @@ def displaycount(user, userdata):
             images.append(gacharich['image'])
             fivestars.append(indivmsg)
 
-    image = concat_images(images, (300, 300))
+    image = concat_images(images, (500, 850))
     imagepath = 'testImage1.jpg'
     image.save('testImage1.jpg', 'JPEG')
     msg = ''.join(fivestars) + ''.join(fourstars) + ''.join(threestars)
