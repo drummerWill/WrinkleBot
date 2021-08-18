@@ -36,7 +36,7 @@ gachas['31a'] =   {'name': 'Big Brutus David', 'image': 'pics/3 stars/bbdavid.pn
 gachas['32a'] =   {'name': 'Bell Boy Jacob', 'image': 'pics/3 stars/bbjacob.png'}
 gachas['33a'] =   {'name': 'Cyberland Logan', 'image': 'pics/3 stars/cyberlogan.png'}
 gachas['34a'] =   {'name': 'The Wicked Dean of the East', 'image': 'pics/3 stars/eastdean.png'}
-
+gachas['35a'] =   {'name': 'Band Bus Dean and William', 'image': 'pics/3 stars/bandbus.png'}
 gachas['36a'] =   {'name': 'Forest Sage Logan', 'image': 'pics/3 stars/forestlogan.png'}
 gachas['37a'] =   {'name': 'Horseman Kyle', 'image': 'pics/3 stars/horsekyle.png'}
 gachas['38a'] =   {'name': 'Ronalds McFriend Adrian', 'image': 'pics/3 stars/mcadrian.png'}
