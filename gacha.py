@@ -32,6 +32,25 @@ gachas['27a'] =   {'name': 'Rouge Logan', 'image': 'pics/3 stars/rougelogan.png'
 gachas['28a'] =   {'name': 'Bright Night Dean', 'image': 'pics/3 stars/bndean.png'}
 gachas['29a'] =   {'name': 'Grunkle Jacob', 'image': 'pics/3 stars/gjacob.png'}
 gachas['30a'] =   {'name': 'Luscious Lips Zach', 'image': 'pics/3 stars/llzach.png'}
+gachas['31a'] =   {'name': 'Big Brutus David', 'image': 'pics/3 stars/bbdavid.png'}
+gachas['32a'] =   {'name': 'Bell Boy Jacob', 'image': 'pics/3 stars/bbjacob.png'}
+gachas['33a'] =   {'name': 'Cyberland Logan', 'image': 'pics/3 stars/cyberlogan.png'}
+gachas['34a'] =   {'name': 'The Wicked Dean of the East', 'image': 'pics/3 stars/eastdean.png'}
+
+gachas['36a'] =   {'name': 'Forest Sage Logan', 'image': 'pics/3 stars/forestlogan.png'}
+gachas['37a'] =   {'name': 'Horseman Kyle', 'image': 'pics/3 stars/horsekyle.png'}
+gachas['38a'] =   {'name': 'Ronalds McFriend Adrian', 'image': 'pics/3 stars/mcadrian.png'}
+gachas['39a'] =   {'name': 'Just a Meme Jacob', 'image': 'pics/3 stars/memejacob.png'}
+gachas['40a'] =   {'name': 'Mountain Monk Jared', 'image': 'pics/3 stars/mmjared.png'}
+gachas['41a'] =   {'name': 'Party Pooper Jared', 'image': 'pics/3 stars/ppjared.png'}
+gachas['42a'] =   {'name': 'RockNRoller Jared', 'image': 'pics/3 stars/rrjared.png'}
+gachas['43a'] =   {'name': 'Salutations Pan', 'image': 'pics/3 stars/salpan.png'}
+gachas['44a'] =   {'name': 'Scout Speeder', 'image': 'pics/3 stars/scoutspeeder.png'}
+gachas['45a'] =   {'name': 'Shifty Sean', 'image': 'pics/3 stars/shiftysean.png'}
+gachas['46a'] =   {'name': 'Shopkeep Andy', 'image': 'pics/3 stars/shopandy.png'}
+gachas['47a'] =   {'name': 'Wolverine Adrian', 'image': 'pics/3 stars/wadrian.png'}
+gachas['48a'] =   {'name': 'Whiz Kid Jared', 'image': 'pics/3 stars/wkjared.png'}
+gachas['49a'] =   {'name': 'Wallstreet Wolf Sean', 'image': 'pics/3 stars/wwsean.png'}
 
 
 
@@ -48,6 +67,8 @@ bettergachas['9b'] = {'name': 'Cosplay Dean and Jared', 'image': 'pics/4 stars/c
 bettergachas['10b'] = {'name': 'Immovable Object Logan', 'image': 'pics/4 stars/immlogan.png'}
 bettergachas['11b'] = {'name': 'Unstoppable Force David', 'image': 'pics/4 stars/undavid.png'}
 bettergachas['12b'] = {'name': 'Lonely Logan', 'image': 'pics/4 stars/lonelylogan.png'}
+bettergachas['13b'] = {'name': 'Happy Hammers', 'image': 'pics/4 stars/happyhammers.png'}
+bettergachas['14b'] = {'name': 'Jared the Executioner', 'image': 'pics/4 stars/ejared.png'}
 
 
 bestgachas = {}
