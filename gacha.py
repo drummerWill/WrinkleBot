@@ -137,7 +137,7 @@ def concat_images(image_paths, size, shape=None):
 
 
 
-def calculateLuck(user, userdata, name):
+def calculateLuck(userdata):
     threestars = 0
     fourstars = 0
     fivestars = 0
