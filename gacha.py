@@ -135,6 +135,38 @@ def concat_images(image_paths, size, shape=None):
     return image
 
 
+
+
+def calculateLuck(user, userdata, name):
+    threestars = 0
+    fourstars = 0
+    fivestars = 0
+     # gacha = userdata['gacha']
+    # gachalist = gacha['gachalist']
+    
+  
+    #find the correct dictionary to look for 
+
+    gachalist= userdata['gacha']['gachalist']
+    for gachaitem in gachalist:
+        if 'a' in gachaitem['id']:
+            threestars = threestars + 1
+        if 'b' in gachaitem['id']:
+            fourstars = fourstars + 1
+        if 'c' in gachaitem['id']:
+            fivestars = fivestars + 1
+
+    total = threestars + fivestars + fourstars
+
+    amount = threestars*(1/.95) + fourstars*(1/.045) + fivestars*(1/.005)
+
+    adjustedAmount = amount/total
+    
+    return adjustedAmount
+
+
+
+
 def showImage(user, userdata, name):
     threestars = []
     fourstars = []

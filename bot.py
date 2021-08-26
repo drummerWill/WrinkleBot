@@ -8,7 +8,7 @@ import math
 import random
 from datetime import date
 import datetime
-from gacha import displayRoster, roll, displaycount, showImage
+from gacha import displayRoster, roll, displaycount, showImage, calculateLuck
 
 intents = discord.Intents.default()
 intents.members = True
@@ -486,7 +486,23 @@ async def on_message(message):
         await message.channel.send(msg)
         return
 
-
+    if message.content.startswith('*luck'):
+        members = await message.guild.fetch_members(limit=150).flatten()
+        res = []
+        for member in members:
+            if (r.exists(member.name)) and member.bot == False:
+                data = eval(r.get(member.name).decode("utf-8"))
+                if 'gacha' in data.keys():
+                    luck = calculateLuck(data)
+                    res.append({'name': member.name, 'luck' : luck})
+        
+        sortedres = sorted(res, key = lambda i: i['luck'])
+        sortedres.reverse()
+        msg = ''
+        for res in sortedres:
+            msg += res['name'] + ' ' + str(round(res['luck'], 2)) + '\n'
+        await message.channel.send(msg)
+        return
 
     if message.content.startswith('*balance'):
             print('Requested')
