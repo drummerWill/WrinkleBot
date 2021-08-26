@@ -30,6 +30,7 @@ async def on_message(message):
         msg = "*da_bank (shows Goon Buck leaderboard) \n"
         msg = msg + "*balance (show your balance) \n"
         msg = msg + "*gamble <amount> (gamble the amount in bucks) \n"
+        msg = msg + "*biggamble <amount> (make a big gamble) \n"
         msg = msg + "*pay <@User> <amount> \n"
         msg = msg + "*positions (show your stock positions) \n"
         msg = msg + "*buy <stock> <amount> (buy amount in bucks) \n"
