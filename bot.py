@@ -501,7 +501,7 @@ async def on_message(message):
         msg = ''
         currentNum = 1
         for res in sortedres:
-            msg += str(currentNum) + '. ' + res['name'] + ' ' + str(round(res['luck'], 2)) + '\n'
+            msg += str(currentNum) + '. ' + res['name'] + '\n'
             currentNum = currentNum + 1
         await message.channel.send(msg)
         return
