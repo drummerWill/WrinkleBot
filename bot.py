@@ -603,7 +603,7 @@ async def on_message(message):
 
 
     
-
+#stuff
 
 async def Foo():
         await client.wait_until_ready()
