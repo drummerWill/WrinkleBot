@@ -22,13 +22,13 @@ gachas['17a'] =   {'name': 'Questionable Pirate William', 'image': 'pics/3 stars
 gachas['18a'] =   {'name': 'Great Pride William', 'image': 'pics/3 stars/pridewill.png'}
 gachas['19a'] =   {'name': 'Scuffed Adrian', 'image': 'pics/3 stars/scuffedadrian.png'}
 gachas['20a'] =   {'name': 'Noble Hero Andrew', 'image': 'pics/3 stars/nobleandy.png'}
-gachas['21a'] =   {'name': 'Popcorn Ruler William', 'image': 'pics/3 stars/popcornwilly.png'}
+gachas['21a'] =   {'name': 'Popcorn King William', 'image': 'pics/3 stars/popcornwilly.png'}
 gachas['22a'] =   {'name': 'Smooth Poser Andrew', 'image': 'pics/3 stars/posandy.png'}
 gachas['23a'] =   {'name': 'Young Bard Dean', 'image': 'pics/3 stars/barddean.png'}
 gachas['24a'] =   {'name': 'Sleepless Jared', 'image': 'pics/3 stars/sleepjared.png'}
 gachas['25a'] =   {'name': 'Bubble Buddy Jared', 'image': 'pics/3 stars/bubblejared.png'}
 gachas['26a'] =   {'name': 'Noir Jared', 'image': 'pics/3 stars/noirjared.png'}
-gachas['27a'] =   {'name': 'Rouge Logan', 'image': 'pics/3 stars/rougelogan.png'}
+gachas['27a'] =   {'name': 'Rogue Logan', 'image': 'pics/3 stars/rougelogan.png'}
 gachas['28a'] =   {'name': 'Bright Night Dean', 'image': 'pics/3 stars/bndean.png'}
 gachas['29a'] =   {'name': 'Grunkle Jacob', 'image': 'pics/3 stars/gjacob.png'}
 gachas['30a'] =   {'name': 'Luscious Lips Zach', 'image': 'pics/3 stars/llzach.png'}
@@ -51,6 +51,27 @@ gachas['46a'] =   {'name': 'Shopkeep Andy', 'image': 'pics/3 stars/shopandy.png'
 gachas['47a'] =   {'name': 'Wolverine Adrian', 'image': 'pics/3 stars/wadrian.png'}
 gachas['48a'] =   {'name': 'Whiz Kid Jared', 'image': 'pics/3 stars/wkjared.png'}
 gachas['49a'] =   {'name': 'Wallstreet Wolf Sean', 'image': 'pics/3 stars/wwsean.png'}
+gachas['50a'] =   {'name': '2 Kool 4 Skool Diego', 'image': 'pics/3 stars/diegokool.png'}
+gachas['51a'] =   {'name': 'Not 2 Kool 4 Skool Diego', 'image': 'pics/3 stars/diegoskool.png'}
+gachas['52a'] =   {'name': 'Pelican Diego', 'image': 'pics/3 stars/diegobeach.png'}
+gachas['53a'] =   {'name': 'Mirror Master Diego', 'image': 'pics/3 stars/diegomirror.png'}
+gachas['54a'] =   {'name': 'Drop It Like Its Hot Kyle', 'image': 'pics/3 stars/kyleass.png'}
+gachas['55a'] =   {'name': 'Camp Counselor Kyle', 'image': 'pics/3 stars/kylecamp.png'}
+gachas['56a'] =   {'name': 'Lil Kyle', 'image': 'pics/3 stars/kylekid.png'}
+gachas['57a'] =   {'name': 'Cool Kid Kyle', 'image': 'pics/3 stars/kylekool.png'}
+gachas['58a'] =   {'name': 'TED Talk Kyle', 'image': 'pics/3 stars/kyletalk.png'}
+gachas['59a'] =   {'name': 'Lil William', 'image': 'pics/3 stars/williamkid.png'}
+gachas['60a'] =   {'name': 'Birthday Blues Hudson', 'image': 'pics/3 stars/hudsonbaby.png'}
+gachas['61a'] =   {'name': 'Great Grad Hudson', 'image': 'pics/3 stars/hudsongrad.png'}
+gachas['62a'] =   {'name': 'Hudson Debonair', 'image': 'pics/3 stars/hudsonhoco.png'}
+gachas['63a'] =   {'name': 'Hunter Hudson', 'image': 'pics/3 stars/hudsonhunt.png'}
+gachas['64a'] =   {'name': 'Soulful Sax Hudson', 'image': 'pics/3 stars/hudsonsax.png'}
+gachas['65a'] =   {'name': 'Baseball Boy Zach', 'image': 'pics/3 stars/zachastros.png'}
+gachas['66a'] =   {'name': 'Hipster Zach', 'image': 'pics/3 stars/zachhips.png'}
+gachas['67a'] =   {'name': 'Loverboy Zach', 'image': 'pics/3 stars/zachlove.png'}
+gachas['68a'] =   {'name': 'Slip Sliding Zach', 'image': 'pics/3 stars/zachslip.png'}
+gachas['69a'] =   {'name': 'Dancing Dean', 'image': 'pics/3 stars/pandance.png'}
+gachas['70a'] =   {'name': 'Why Dean?', 'image': 'pics/3 stars/panwhy.png'}
 
 
 
@@ -69,6 +90,16 @@ bettergachas['11b'] = {'name': 'Unstoppable Force David', 'image': 'pics/4 stars
 bettergachas['12b'] = {'name': 'Lonely Logan', 'image': 'pics/4 stars/lonelylogan.png'}
 bettergachas['13b'] = {'name': 'Happy Hammers', 'image': 'pics/4 stars/happyhammers.png'}
 bettergachas['14b'] = {'name': 'Jared the Executioner', 'image': 'pics/4 stars/ejared.png'}
+bettergachas['15b'] = {'name': 'Gentleman Diego', 'image': 'pics/4 stars/diegogentleman.png'}
+bettergachas['16b'] = {'name': 'The Fault in Our Kyles', 'image': 'pics/4 stars/kylesfault.png'}
+bettergachas['17b'] = {'name': 'Conqueror Kyle', 'image': 'pics/4 stars/kyleking.png'}
+bettergachas['18b'] = {'name': 'Pizza Mage Kyle', 'image': 'pics/4 stars/kylemage.png'}
+bettergachas['19b'] = {'name': 'Speed Force William', 'image': 'pics/4 stars/williamforce.png'}
+bettergachas['19b'] = {'name': 'Daredevil David', 'image': 'pics/4 stars/davidbike.png'}
+bettergachas['20b'] = {'name': 'Hypeman Hudson', 'image': 'pics/4 stars/hudsonhype.png'}
+bettergachas['21b'] = {'name': 'Gentleman Hudson', 'image': 'pics/4 stars/hudsonhot.png'}
+bettergachas['22b'] = {'name': 'Gentleman Zach', 'image': 'pics/4 stars/zachhot.png'}
+bettergachas['23b'] = {'name': 'None the Wiser Dean', 'image': 'pics/4 stars/panteeth.png'}
 
 
 bestgachas = {}
@@ -82,6 +113,8 @@ bestgachas['7c'] = {'name': 'Kyle on Elsa', 'image': 'pics/5 stars/kyleelsa.png'
 bestgachas['8c'] = {'name': 'MilkW', 'image': 'pics/5 stars/milkw.png'}
 bestgachas['9c'] = {'name': 'Super Dean', 'image': 'pics/5 stars/superdean.png'}
 bestgachas['10c'] = {'name': 'Toe Goblin Sean', 'image': 'pics/5 stars/toesean.png'}
+bestgachas['11c'] = {'name': 'Galaxy Brain William', 'image': 'pics/5 stars/williambrain.png'}
+bestgachas['12c'] = {'name': 'Congo King Dean', 'image': 'pics/5 stars/panking.png'}
 
 
 
