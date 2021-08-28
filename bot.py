@@ -448,6 +448,8 @@ async def on_message(message):
 
     if message.content.startswith('*roll'):
         if (r.exists(message.author.name)):
+           if (message.author.name == 'Gachary'):
+                return
         #    if message.author.name !='William':
         #         return 
            data = eval(r.get(message.author.name).decode("utf-8"))
@@ -573,7 +575,8 @@ async def on_message(message):
                 data = eval(r.get(member.name).decode("utf-8"))
                 if 'gacha' in data.keys():
                     luck = calculateLuck(data)
-                    res.append({'name': member.name, 'luck' : luck})
+                    if (member.name != 'Gachary'):
+                        res.append({'name': member.name, 'luck' : luck})
         
         sortedres = sorted(res, key = lambda i: i['luck'])
         sortedres.reverse()
