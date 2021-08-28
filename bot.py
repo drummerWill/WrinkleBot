@@ -538,7 +538,7 @@ async def on_message(message):
                         if hasEntry == True:
                             data = eval(r.get(member.name).decode("utf-8"))
                             if ('tickets' in data.keys()):
-                                data['tickets'] =  data['tickets'] + numtick
+                                data['tickets'] =  data['tickets'] + int(numtick)
                         r.set(member.name, str(data))
             return
 
