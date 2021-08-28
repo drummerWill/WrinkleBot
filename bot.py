@@ -10,6 +10,7 @@ from datetime import date
 import datetime
 from gacha import displayRoster, roll, displaycount, showImage, calculateLuck, reroll
 
+williamId = 87614986049814528
 
 intents = discord.Intents.default()
 intents.members = True
@@ -336,7 +337,7 @@ async def on_message(message):
 
     if message.content.startswith('*gift'):
         print(message.author.id)
-        if (message.author.name == 'William'):
+        if (message.author.id == williamId):
             amount = float(message.content.split()[2])
             if (amount < 0):
                 return
@@ -501,7 +502,7 @@ async def on_message(message):
 
 
     if message.content.startswith('*tax'):
-        if (message.author.name == 'Nobuzerker' or message.author.name == 'Yertle' or message.author.name == 'William'):
+        if (message.author.id == williamId):
             amount = float(message.content.split()[2])
             if (amount < 0):
                 return
@@ -522,7 +523,7 @@ async def on_message(message):
 
 
     if message.content.startswith('*promo'):
-            if (message.author.name != 'William'):
+            if (message.author.id == williamId):
                 return
             numtick = message.content.split()[1]
             guildid = 251058760779431936
@@ -594,7 +595,7 @@ async def on_message(message):
 
 
     if message.content.startswith('*bailout'):
-        if (message.author.name == 'Nobuzerker' or message.author.name == 'Yertle' or message.author.name == 'William'):
+        if (message.author.id == williamId):
             amount = float(message.content.split()[2])
             if (amount < 0):
                 return
