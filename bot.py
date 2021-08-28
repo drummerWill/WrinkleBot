@@ -8,7 +8,7 @@ import math
 import random
 from datetime import date
 import datetime
-from gacha import displayRoster, roll, displaycount, showImage, calculateLuck
+from gacha import displayRoster, roll, displaycount, showImage, calculateLuck, reroll
 
 intents = discord.Intents.default()
 intents.members = True
@@ -426,6 +426,23 @@ async def on_message(message):
            await message.channel.send(file=discord.File(imagepath))
         return
 
+    if message.content.startswith('*reroll'):
+        if (r.exists(message.author.name)):
+           data = eval(r.get(message.author.name).decode("utf-8"))
+           if ('gacha' not in data.keys()):
+               return
+           name = message.content[8:]
+           worked, newdata = reroll(message.author.name, data, name)
+           if worked:
+                r.set(message.author.name, str(newdata))
+                await message.channel.send('You traded for a ticket!')
+           else:
+                await message.channel.send('No.')
+        return
+
+
+
+
     if message.content.startswith('*roll'):
         if (r.exists(message.author.name)):
         #    if message.author.name !='William':
@@ -603,7 +620,7 @@ async def on_message(message):
 
 
     
-
+#stuff
 
 async def Foo():
         await client.wait_until_ready()
