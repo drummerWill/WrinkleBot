@@ -72,6 +72,11 @@ gachas['67a'] =   {'name': 'Loverboy Zach', 'image': 'pics/3 stars/zachlove.png'
 gachas['68a'] =   {'name': 'Slip Sliding Zach', 'image': 'pics/3 stars/zachslip.png'}
 gachas['69a'] =   {'name': 'Dancing Dean', 'image': 'pics/3 stars/pandance.png'}
 gachas['70a'] =   {'name': 'Why Dean?', 'image': 'pics/3 stars/panwhy.png'}
+gachas['71a'] =   {'name': 'Snow Sculpter Garrett', 'image': 'pics/3 stars/garrettsnow.png'}
+gachas['72a'] =   {'name': 'Her Royal Highness Garrett', 'image': 'pics/3 stars/garrettsnap.png'}
+gachas['73a'] =   {'name': 'Pumpkin King Garrett', 'image': 'pics/3 stars/garrettpatch.png'}
+gachas['74a'] =   {'name': 'Master Sorcerer Garrett', 'image': 'pics/3 stars/garrettgrad.png'}
+gachas['75a'] =   {'name': 'BazookAndrew', 'image': 'pics/3 stars/andygum.png'}
 
 
 
@@ -100,6 +105,8 @@ bettergachas['20b'] = {'name': 'Hypeman Hudson', 'image': 'pics/4 stars/hudsonhy
 bettergachas['21b'] = {'name': 'Gentleman Hudson', 'image': 'pics/4 stars/hudsonhot.png'}
 bettergachas['22b'] = {'name': 'Gentleman Zach', 'image': 'pics/4 stars/zachhot.png'}
 bettergachas['23b'] = {'name': 'None the Wiser Dean', 'image': 'pics/4 stars/panteeth.png'}
+bettergachas['24b'] = {'name': 'Minecraft Munchies Garrett', 'image': 'pics/4 stars/garrettmunch.png'}
+bettergachas['25b'] = {'name': 'O-Dean Chan', 'image': 'pics/4 stars/deanchan.png'}
 
 
 bestgachas = {}
