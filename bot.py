@@ -10,6 +10,7 @@ from datetime import date
 import datetime
 from gacha import displayRoster, roll, displaycount, showImage, calculateLuck, reroll
 
+
 intents = discord.Intents.default()
 intents.members = True
 client = discord.Client(intents=intents) 
@@ -334,6 +335,7 @@ async def on_message(message):
 
 
     if message.content.startswith('*gift'):
+        print(message.author.id)
         if (message.author.name == 'William'):
             amount = float(message.content.split()[2])
             if (amount < 0):
