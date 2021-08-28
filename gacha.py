@@ -291,11 +291,11 @@ def displayRoster(user, userdata):
 
 
     images = fivestars + fourstars + threestars
-    imageheight = math.ceil(len(images)/4)
-    needed = imageheight*4
+    imageheight = math.ceil(len(images)/8)
+    needed = imageheight*8
     for i in range(needed-len(images)):
         images.append('pics/blank.png')
-    image = concat_images(images, (500, 850), (imageheight, 4))
+    image = concat_images(images, (500, 850), (imageheight, 8))
     imagepath = 'testImage1.jpg'
     image.save('testImage1.jpg', 'JPEG')
     return imagepath
