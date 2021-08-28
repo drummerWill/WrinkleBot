@@ -15,7 +15,7 @@ intents.members = True
 client = discord.Client(intents=intents) 
 token = os.getenv("DISCORD_BOT_TOKEN")
 r = redis.from_url(os.environ.get("REDISTOGO_URL"))
-
+#write some stuff
 @client.event
 async def on_ready():
     print('We have logged in as {0.user}'.format(client))
