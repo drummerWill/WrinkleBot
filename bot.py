@@ -519,6 +519,31 @@ async def on_message(message):
             return
 
 
+
+    if message.content.startswith('*promo'):
+            if (message.author.name != 'William'):
+                return
+            numtick = message.content.split()[1]
+            guildid = 251058760779431936
+            guild = client.get_guild(guildid)
+            members = await guild.fetch_members(limit=150).flatten()
+            goodgoons = []
+            for member in members:
+                if (member.voice != None and member.voice.self_mute == False and member.voice.self_deaf == False):
+                    goodgoons.append(member)
+            for member in members:
+                if ((member.voice != None) and (member.voice.self_mute == False) and (member.voice.self_deaf == False) and (member.voice.mute == False) and (member.voice.deaf == False)):
+                    if any(goon.voice.channel.id == member.voice.channel.id and goon.id != member.id for goon in goodgoons):
+                        hasEntry = r.exists(member.name)
+                        data = {'wrinkles':0, 'smooths':0, 'GoonBucks':20}
+                        if hasEntry == True:
+                            data = eval(r.get(member.name).decode("utf-8"))
+                            if ('tickets' in data.keys()):
+                                data['tickets'] =  data['tickets'] + numtick
+                        r.set(member.name, str(data))
+            return
+
+
     if message.content.startswith('*da_bank'):
         members = await message.guild.fetch_members(limit=150).flatten()
         res = []
