@@ -376,7 +376,7 @@ def displaycount(user, userdata):
             fivestars.append(indivmsg)
 
     msgs = []
-    if (len(threestars > 30)):
+    if (len(threestars) > 30):
         msg1 = ''.join(fivestars) + ''.join(fourstars) + ''.join(threestars[0:30])
         msg2 = ''.join(threestars[31:])
         msgs = [msg1, msg2]
