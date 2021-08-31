@@ -243,17 +243,17 @@ def showImage(user, userdata, name):
 
 
 def reroll(user, userdata, name):
-    item, rich = getreroll(user, userdata, name)
+    item, needed, gained = getreroll(user, userdata, name)
     amount = item['amount']
-    if (amount  < 4):
+    if (amount  < needed):
         return False, userdata
 
     gachaid = item['id'] 
     if (next((item for item in userdata['gacha']['gachalist'] if item["id"] == gachaid), None)):
         i = next((i for i, item in enumerate(userdata['gacha']['gachalist']) if item["id"] == gachaid))
-        amount = userdata['gacha']['gachalist'][i]['amount'] - 3
+        amount = userdata['gacha']['gachalist'][i]['amount'] - (needed - 1) 
         userdata['gacha']['gachalist'][i] ={'amount': amount, 'id':gachaid}
-        userdata['tickets'] = userdata['tickets'] + 1
+        userdata['tickets'] = userdata['tickets'] + gained
     else:
         userdata['gacha']['gachalist'].append({'amount': amount, 'id':gachaid})
 
@@ -281,17 +281,17 @@ def getreroll(user, userdata, name):
             dicttosearch = gachas
             gacharich = dicttosearch[gachaitem['id']]
             if gacharich['name'] == name:
-                return gachaitem, gacharich
+                return gachaitem, 4, 1
         if 'b' in gachaitem['id']:
             dicttosearch = bettergachas 
             gacharich = dicttosearch[gachaitem['id']]
             if gacharich['name'] == name:
-                return gachaitem, gacharich
+                return gachaitem, 2, 1
         if 'c' in gachaitem['id']:
             dicttosearch = bestgachas 
             gacharich = dicttosearch[gachaitem['id']]
             if gacharich['name'] == name:
-                return gachaitem, gacharich
+                return gachaitem, 2, 3
     
     
     
