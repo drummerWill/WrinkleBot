@@ -205,6 +205,43 @@ def calculateLuck(userdata):
     return adjustedAmount
 
 
+def getUnique(stats, listofids):
+    unique = 0
+    for id in stats['ids']:
+        if (sum(allId == id for allId in listofids) == 1):
+            unique = unique + 1
+    return unique
+
+
+
+def getStats(userdata):
+    threestars = 0
+    fourstars = 0
+    fivestars = 0
+     # gacha = userdata['gacha']
+    # gachalist = gacha['gachalist']
+    stats = {}
+    ids = []
+    #find the correct dictionary to look for 
+
+    gachalist= userdata['gacha']['gachalist']
+    for gachaitem in gachalist:
+        if gachaitem['id'] not in ids:
+                ids.append(gachaitem['id'])
+        if 'a' in gachaitem['id']:
+            threestars = threestars + 1
+        if 'b' in gachaitem['id']:
+            fourstars = fourstars + 1
+        if 'c' in gachaitem['id']:
+            fivestars = fivestars + 1
+
+    total = threestars + fivestars + fourstars
+    stats['total'] = total
+    stats['threestars'] = threestars
+    stats['fourstars'] = fourstars
+    stats['fivestars'] = fivestars
+    stats['ids'] = ids
+    return stats
 
 
 def showImage(user, userdata, name):

@@ -8,7 +8,7 @@ import math
 import random
 from datetime import date
 import datetime
-from gacha import displayRoster, roll, displaycount, showImage, calculateLuck, reroll
+from gacha import displayRoster, getStats, roll, displaycount, showImage, calculateLuck, reroll, getUnique
 
 williamId = 87614986049814528
 
@@ -588,6 +588,39 @@ async def on_message(message):
             currentNum = currentNum + 1
         await message.channel.send(msg)
         return
+
+    if message.content.startswith('*stats'):
+        members = await message.guild.fetch_members(limit=150).flatten()
+        res = []
+        for member in members:
+            if (r.exists(member.name)) and member.bot == False:
+                data = eval(r.get(member.name).decode("utf-8"))
+                if 'gacha' in data.keys():
+                    stats = getStats(data)
+                    if (member.name != 'Gachary' and member.name != 'Pancakes Baby 46'):
+                        res.append({'name': member.name, 'stats' : stats})
+        
+
+        listlistids = []
+        for result in res:
+            listlistids.append(result['stats']['ids'])
+        
+        flatList = [item for sublist in listlistids for item in sublist]
+
+        for result in res:
+            result['stats']['unique'] = getUnique(result['stats'], flatList)
+
+        sortedres = sorted(res, key = lambda i: i['stats']['total'])
+        sortedres.reverse()
+        msg = ''
+        for res in sortedres:
+            msg += res['name'] + ': ' + str(res['stats']['total']) + ', ' + '(' + str(res['stats']['threestars']) + str(res['stats']['fourstars']) + str(res['stats']['fivestars']) +  ')' + str(len(res['stats']['ids'])) + ' | ' + str(res['stats']['unique']) + '\n'
+        await message.channel.send(msg)
+        return
+
+
+
+
 
     if message.content.startswith('*balance'):
             print('Requested')
