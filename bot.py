@@ -612,9 +612,9 @@ async def on_message(message):
 
         sortedres = sorted(res, key = lambda i: i['stats']['total'])
         sortedres.reverse()
-        msg = ''
+        msg = 'name: (3 stars, 4 stars, 5 stars) | Unique cards'+ '\n'
         for res in sortedres:
-            msg += res['name'] + ': ' + str(res['stats']['total']) + ', ' + '(' + str(res['stats']['threestars']) + str(res['stats']['fourstars']) + str(res['stats']['fivestars']) +  ')' + str(len(res['stats']['ids'])) + ' | ' + str(res['stats']['unique']) + '\n'
+            msg += res['name'] + ': ' + str(res['stats']['total']) + ', ' + '(' + str(res['stats']['threestars']) + ' | ' + str(res['stats']['fourstars']) + ' | ' +str(res['stats']['fivestars']) +  ')'  + ' | ' + str(res['stats']['unique']) + '\n'
         await message.channel.send(msg)
         return
 
