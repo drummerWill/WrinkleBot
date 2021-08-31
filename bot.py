@@ -405,8 +405,9 @@ async def on_message(message):
            data = eval(r.get(message.author.name).decode("utf-8"))
            if ('gacha' not in data.keys()):
                return
-           msg = displaycount(message.author.name, data)
-           await message.channel.send(msg)
+           msgs = displaycount(message.author.name, data)
+           for msg in msgs:
+                await message.channel.send(msg)
         return
 
     if message.content.startswith('*roster'):

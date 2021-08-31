@@ -375,8 +375,15 @@ def displaycount(user, userdata):
             indivmsg = str(gachaitem['amount']) + 'x ' + gacharich['name'] + ' (' + star + ') ' + '\n'
             fivestars.append(indivmsg)
 
-    msg = ''.join(fivestars) + ''.join(fourstars) + ''.join(threestars)
-    return msg
+    msgs = []
+    if (len(threestars > 30)):
+        msg1 = ''.join(fivestars) + ''.join(fourstars) + ''.join(threestars[0:30])
+        msg2 = ''.join(threestars[31:])
+        msgs = [msg1, msg2]
+    else:
+        msgs = [''.join(fivestars) + ''.join(fourstars) + ''.join(threestars)]
+
+    return msgs 
 
 # lowtier = 0 
 # midtier = 0
