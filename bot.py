@@ -526,7 +526,7 @@ async def on_message(message):
 
 
     if message.content.startswith('*promo'):
-            if (message.author.id == williamId):
+            if (message.author.id != williamId):
                 return
             numtick = message.content.split()[1]
             guildid = 251058760779431936
