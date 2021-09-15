@@ -530,6 +530,7 @@ async def on_message(message):
                 return
             numtick = message.content.split()[1]
             guildid = 251058760779431936
+            mentions = []
             guild = client.get_guild(guildid)
             members = await guild.fetch_members(limit=150).flatten()
             goodgoons = []
@@ -544,8 +545,11 @@ async def on_message(message):
                         if hasEntry == True:
                             data = eval(r.get(member.name).decode("utf-8"))
                             if ('tickets' in data.keys()):
+                                mentions.append(member.mention)
                                 data['tickets'] =  data['tickets'] + int(numtick)
                         r.set(member.name, str(data))
+            mentionsmsg = ' '.join(mentions)
+            await message.channel.send(mentionsmsg)
             return
 
 
