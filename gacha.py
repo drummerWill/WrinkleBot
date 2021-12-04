@@ -413,12 +413,18 @@ def displaycount(user, userdata):
             fivestars.append(indivmsg)
 
     msgs = []
-    if (len(threestars) > 30):
-        msg1 = ''.join(fivestars) + ''.join(fourstars) + ''.join(threestars[0:30])
-        msg2 = ''.join(threestars[31:])
-        msgs = [msg1, msg2]
-    else:
-        msgs = [''.join(fivestars) + ''.join(fourstars) + ''.join(threestars)]
+    allLists = fivestars + fourstars + threestars
+    mychunks = chunks(allLists, 30)
+    for chunk in mychunks:
+        msgs.append(''.join(chunk))
+
+
+    # if (len(threestars) > 30):
+    #     msg1 = ''.join(fivestars) + ''.join(fourstars) + ''.join(threestars[0:30])
+    #     msg2 = ''.join(threestars[31:])
+    #     msgs = [msg1, msg2]
+    # else:
+    #     msgs = [''.join(fivestars) + ''.join(fourstars) + ''.join(threestars)]
 
     return msgs 
 
@@ -439,6 +445,11 @@ def displaycount(user, userdata):
 # print(lowtier)
 # print(midtier)
 # print(hightier)
+
+def chunks(l, n):
+    n = max(1, n)
+    return (l[i:i+n] for i in range(0, len(l), n))
+
 
 def roll(user, userdata):
 
