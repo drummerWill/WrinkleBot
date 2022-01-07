@@ -809,7 +809,7 @@ async def run(originalMessage, selection):
     #     msg += str(i) + '. ' + key + ' (' + str(value) + ')'
     #     i = i  + 1 
     for pair in items:
-        msg += str(i) + '. ' + pair[0] + ' (' + str(pair[1]) + ')'
+        msg += str(i) + '. ' + pair[0] + ' (' + str(pair[1]) + ') \n'
         i = i  + 1 
     await originalMessage.channel.send(msg)
 
