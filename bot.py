@@ -139,7 +139,7 @@ async def on_message(message):
 
     if message.content.startswith('*emoji'):
         await run(message, "personal")
-        return'
+        return
 
     if message.content.startswith('*stonk'):
         stonk = str(message.content.split()[1])
