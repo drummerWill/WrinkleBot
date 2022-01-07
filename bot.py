@@ -133,9 +133,13 @@ async def on_message(message):
         await message.channel.send('Gave ' + members.name + ' a wrinkle. They now have ' + str(data['wrinkles']) + '.')
         return
 
-    if message.content.startswith('*emoji'):
-        await run(message)
+    if message.content.startswith('*channelemoji'):
+        await run(message, "channel")
         return
+
+    if message.content.startswith('*emoji'):
+        await run(message, "personal")
+        return'
 
     if message.content.startswith('*stonk'):
         stonk = str(message.content.split()[1])
@@ -736,7 +740,7 @@ def calculateWage(member):
         wage = .05
     return wage
 
-async def run(originalMessage):
+async def run(originalMessage, selection):
     emojis = originalMessage.channel.guild.emojis
     ids = []
     for emoji in emojis:
@@ -745,23 +749,24 @@ async def run(originalMessage):
     print('RECIEVED REQUEST')
     words = re.sub("[^\w-]", " ",  originalMessage.content).split()
     channelSelct = words[1]
-    optionSelect = words[2]
+    #optionSelect = words[2]
     nameSelect = False
     nameForSelect = ""
     dateRange = ""
-    if (len(words) >= 4):
+    if (len(words) == 3):
         dateOptions = ["day", "month", "year", "week"]
         thirdWord = words[3]
         if thirdWord in dateOptions:
             dateSelect = True
             dateRange = words[3]
-            if len(words) == 5:
-                nameSelect = True
-                nameForSelect = ' '.join(words[4:])
-        else:
-            nameForSelect = ' '.join(words[3:])
-            nameSelect = True
+            
  
+    if selection == "personal":
+        nameSelect = False
+    if selection == "personal":
+        nameForSelect = originalMessage.author.name
+        nameSelect = True
+
     channels = filter((lambda c: str(c.type) == "text" and c.name == channelSelct), originalMessage.channel.guild.channels)
     channel = next(channels)
     channelDict = {}
