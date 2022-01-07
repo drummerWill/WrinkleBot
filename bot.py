@@ -796,7 +796,11 @@ async def run(originalMessage, selection):
     dicts = runProcessing(channelDict, channel.name, ids)
     print(dicts)
     finaldics = combineDics(dicts)
+    items = finaldics.items()
+    sortedItems = items.sort(key = lambda x: x[1])
+    print(sortedItems)
     sortedstuff = {k: v for k, v in sorted(finaldics.items(), key=lambda item: item[1])}
+    print(sortedstuff)
     msg = ""
     i = 1
     for key, value in sortedstuff:
