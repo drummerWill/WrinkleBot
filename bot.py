@@ -132,7 +132,9 @@ async def on_message(message):
         await message.channel.send('Gave ' + members.name + ' a wrinkle. They now have ' + str(data['wrinkles']) + '.')
         return
 
-
+    if message.content.startswith('*emoji'):
+        await run(message)
+        return
 
     if message.content.startswith('*stonk'):
         stonk = str(message.content.split()[1])
