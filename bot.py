@@ -785,9 +785,8 @@ async def run(originalMessage):
             else:
                 channelDict.update({message.author.name: userMsgs})            
     print('SAVING IMAGE')
-    imgLocation = runProcessing(channelDict, channel.name, optionSelect)
-    if optionSelect == "wordcloud":
-        await originalMessage.channel.send(channelSelct + " " + nameForSelect)
+    dicts = runProcessing(channelDict, channel.name, optionSelect)
+    print(dicts)
     await originalMessage.channel.send(file=discord.File(imgLocation))
 
 
