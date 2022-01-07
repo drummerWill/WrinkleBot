@@ -18,7 +18,16 @@ def countEmoji(channel, name, ids):
                     if emoji in userdict:
                         userdict[emoji] =  userdict[emoji] + 1
                     else: 
-                        userdict[emoji] = + 1
+                        userdict[emoji] =  1
         alldics.append(userdict)
             
     return alldics
+
+def combineDics(dics):
+    totalemos = {}
+    for user in dics:
+        for key, value in user.items():
+         if key in totalemos:
+            totalemos[key] =  totalemos[key] +value
+        else: 
+            totalemos[key] =  value
