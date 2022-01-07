@@ -755,10 +755,10 @@ async def run(originalMessage, selection):
     dateRange = ""
     if (len(words) == 3):
         dateOptions = ["day", "month", "year", "week"]
-        thirdWord = words[3]
+        thirdWord = words[2]
         if thirdWord in dateOptions:
             dateSelect = True
-            dateRange = words[3]
+            dateRange = words[2]
             
  
     if selection == "personal":
