@@ -10,7 +10,7 @@ import random
 from datetime import date
 import datetime
 from processing import runProcessing, combineDics
-from gacha import displayRoster, getStats, roll, displaycount, showImage, calculateLuck, reroll, getUnique
+from gacha import displayRoster, getStats, roll, displaycount, showImage, calculateLuck, reroll, getUnique, chunks
 
 
 cache = {}
@@ -808,10 +808,16 @@ async def run(originalMessage, selection):
     # for key, value in sortedstuff:
     #     msg += str(i) + '. ' + key + ' (' + str(value) + ')'
     #     i = i  + 1 
+    msgs = []
     for pair in items:
-        msg += str(i) + '. ' + pair[0] + ' (' + str(pair[1]) + ') \n'
+        msgs.append(str(i) + '. ' + pair[0] + ' (' + str(pair[1]) + ') \n')
         i = i  + 1 
-    await originalMessage.channel.send(msg)
+    finals = []
+    mychunks = chunks(msgs, 30)
+    for chunk in mychunks:
+        finals.append(''.join(chunk))
+    for final in finals:
+        await originalMessage.channel.send(final)
 
 
 
