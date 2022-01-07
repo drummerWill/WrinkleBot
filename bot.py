@@ -8,7 +8,11 @@ import math
 import random
 from datetime import date
 import datetime
+from processing import runProcessing
 from gacha import displayRoster, getStats, roll, displaycount, showImage, calculateLuck, reroll, getUnique
+
+
+cache = {}
 
 williamId = 87614986049814528
 
@@ -728,6 +732,72 @@ def calculateWage(member):
     if (member.is_on_mobile()):
         wage = .05
     return wage
+
+async def run(originalMessage):
+    print('RECIEVED REQUEST')
+    words = re.sub("[^\w-]", " ",  originalMessage.content).split()
+    channelSelct = words[1]
+    optionSelect = words[2]
+    nameSelect = False
+    nameForSelect = ""
+    dateRange = ""
+    if (len(words) >= 4):
+        dateOptions = ["day", "month", "year", "week"]
+        thirdWord = words[3]
+        if thirdWord in dateOptions:
+            dateSelect = True
+            dateRange = words[3]
+            if len(words) == 5:
+                nameSelect = True
+                nameForSelect = ' '.join(words[4:])
+        else:
+            nameForSelect = ' '.join(words[3:])
+            nameSelect = True
+ 
+    channels = filter((lambda c: str(c.type) == "text" and c.name == channelSelct), originalMessage.channel.guild.channels)
+    channel = next(channels)
+    channelDict = {}
+    channelMessages = []
+    print('GETTING MESSAGES')
+    cachedMessages = cache.get(channel.id, [])
+    if len(cachedMessages) > 0:
+        channelMessages = cachedMessages
+    else:
+        channelMessages = await channel.history(limit=None).flatten()
+        cache.update({channel.id: channelMessages})
+
+
+    print('RECIEVED MESSAGES')
+    toDate = getToDate(dateRange)
+    print(nameForSelect)
+    for message in channelMessages:
+        if message.author.bot == False and message.created_at > toDate:
+            userMsgs = channelDict.get(message.author.name, [])
+            userMsgs.append(message)
+            if nameSelect:
+                if nameForSelect == message.author.name:
+                    channelDict.update({message.author.name: userMsgs})
+            else:
+                channelDict.update({message.author.name: userMsgs})            
+    print('SAVING IMAGE')
+    imgLocation = runProcessing(channelDict, channel.name, optionSelect)
+    if optionSelect == "wordcloud":
+        await originalMessage.channel.send(channelSelct + " " + nameForSelect)
+    await originalMessage.channel.send(file=discord.File(imgLocation))
+
+
+
+def getToDate(selc):
+    currentTime = datetime.datetime.utcnow()
+    if selc == "day":
+        return currentTime - datetime.timedelta(days=1)
+    if selc == "month":
+        return currentTime - datetime.timedelta(days=31)
+    if selc == "year":
+        return currentTime - datetime.timedelta(days=365)
+    if selc == "week":
+        return currentTime - datetime.timedelta(days=7)
+    return datetime.datetime(1999, 5, 17)
 
 
 
