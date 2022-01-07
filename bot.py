@@ -9,7 +9,7 @@ import re
 import random
 from datetime import date
 import datetime
-from processing import runProcessing
+from processing import runProcessing, combineDics
 from gacha import displayRoster, getStats, roll, displaycount, showImage, calculateLuck, reroll, getUnique
 
 
@@ -795,7 +795,14 @@ async def run(originalMessage, selection):
     print('SAVING IMAGE')
     dicts = runProcessing(channelDict, channel.name, ids)
     print(dicts)
-    await originalMessage.channel.send(file=discord.File(imgLocation))
+    finaldics = combineDics(dicts)
+    sortedstuff = {k: v for k, v in sorted(finaldics.items(), key=lambda item: item[1])}
+    msg = ""
+    i = 1
+    for key, value in sortedstuff:
+        msg += str(i) + '. ' + key + ' (' + str(value) + ')'
+        i = i  + 1 
+    await originalMessage.channel.send(msg)
 
 
 
