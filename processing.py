@@ -12,6 +12,7 @@ def countEmoji(channel, name, ids):
         for msg in user[1]:
             emojis =  [x.group() for x in re.finditer(r'(<a?)?:\w+:(\d{18}>)', msg.content)]
             for emoji in emojis:
+                print(emoji)
                 emojiId = emoji[-19][:-1]
                 print(emojiId)
                 if emojiId in ids:
