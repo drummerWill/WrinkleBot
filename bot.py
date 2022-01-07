@@ -738,7 +738,10 @@ def calculateWage(member):
 
 async def run(originalMessage):
     emojis = originalMessage.channel.guild.emojis
-    print(emojis)
+    ids = []
+    for emoji in emojis:
+        ids.append(emoji.id)
+    print(ids)
     print('RECIEVED REQUEST')
     words = re.sub("[^\w-]", " ",  originalMessage.content).split()
     channelSelct = words[1]
