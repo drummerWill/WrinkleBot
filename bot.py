@@ -797,17 +797,18 @@ async def run(originalMessage, selection):
     print(dicts)
     finaldics = combineDics(dicts)
     print(finaldics)
-    items = finaldics.items()
-    sortedItems = items.sort(key = lambda x: x[1])
-    print(sortedItems)
-    sortedstuff = {k: v for k, v in sorted(finaldics.items(), key=lambda item: item[1])}
-    print(sortedstuff)
+    items = list(finaldics.items())
+    items.sort(key = lambda x: x[1])
+    items.reverse()
+    print(items)
+    # sortedstuff = {k: v for k, v in sorted(finaldics.items(), key=lambda item: item[1])}
+    # print(sortedstuff)
     msg = ""
     i = 1
-    for key, value in sortedstuff:
-        msg += str(i) + '. ' + key + ' (' + str(value) + ')'
-        i = i  + 1 
-    for pair in sortedItems:
+    # for key, value in sortedstuff:
+    #     msg += str(i) + '. ' + key + ' (' + str(value) + ')'
+    #     i = i  + 1 
+    for pair in items:
         msg += str(i) + '. ' + pair[0] + ' (' + str(pair[1]) + ')'
         i = i  + 1 
     await originalMessage.channel.send(msg)
