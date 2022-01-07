@@ -15,7 +15,7 @@ def countEmoji(channel, name, ids):
                 print(emoji)
                 emojiId = emoji[-19:][:-1]
                 print(emojiId)
-                if emojiId in ids:
+                if int(emojiId) in ids:
                     if emoji in userdict:
                         userdict[emoji] =  userdict[emoji] + 1
                     else: 
