@@ -4,4 +4,3 @@ yahoo_fin
 requests
 pandas
 Pillow
-re

@@ -5,6 +5,7 @@ from discord.ext import commands, tasks
 from yahoo_fin import stock_info as si 
 import asyncio
 import math
+import re
 import random
 from datetime import date
 import datetime
