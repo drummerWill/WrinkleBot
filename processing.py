@@ -29,6 +29,6 @@ def combineDics(dics):
         for key, value in user.items():
          if key in totalemos:
             totalemos[key] =  totalemos[key] +value
-        else: 
+         else: 
             totalemos[key] =  value
     return totalemos
