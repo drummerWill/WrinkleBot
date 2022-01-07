@@ -796,6 +796,7 @@ async def run(originalMessage, selection):
     dicts = runProcessing(channelDict, channel.name, ids)
     print(dicts)
     finaldics = combineDics(dicts)
+    print(finaldics)
     items = finaldics.items()
     sortedItems = items.sort(key = lambda x: x[1])
     print(sortedItems)
@@ -805,6 +806,9 @@ async def run(originalMessage, selection):
     i = 1
     for key, value in sortedstuff:
         msg += str(i) + '. ' + key + ' (' + str(value) + ')'
+        i = i  + 1 
+    for pair in sortedItems:
+        msg += str(i) + '. ' + pair[0] + ' (' + str(pair[1]) + ')'
         i = i  + 1 
     await originalMessage.channel.send(msg)
 
