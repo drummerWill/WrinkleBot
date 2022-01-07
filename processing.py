@@ -1,8 +1,7 @@
 import re
 
-def runProcessing(myDict, name, option, ids):
-       if option == "emoji":
-             return countEmoji(myDict, name, ids)
+def runProcessing(myDict, name, ids):
+    return countEmoji(myDict, name, ids)
 
 
 def countEmoji(channel, name, ids):

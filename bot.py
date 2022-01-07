@@ -793,7 +793,7 @@ async def run(originalMessage, selection):
             else:
                 channelDict.update({message.author.name: userMsgs})            
     print('SAVING IMAGE')
-    dicts = runProcessing(channelDict, channel.name, optionSelect, ids)
+    dicts = runProcessing(channelDict, channel.name, ids)
     print(dicts)
     await originalMessage.channel.send(file=discord.File(imgLocation))
 
