@@ -31,3 +31,4 @@ def combineDics(dics):
             totalemos[key] =  totalemos[key] +value
         else: 
             totalemos[key] =  value
+    return totalemos
